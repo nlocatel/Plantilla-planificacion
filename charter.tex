@@ -1,5 +1,10 @@
 \documentclass[11pt]{charter}
 
+\usepackage{pdflscape}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{pgfgantt}
+
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
 \titulo{Software probador de relé ferroviario} 
 
@@ -14,14 +19,14 @@
 \autor{Nicolás Locatelli} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Ariel Luthemberg}
+\director{Gustavo Ramoscelli}
 \pertenenciaDirector{GICSAFE} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
 \pertenenciaCoDirector{}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Trenes Argentinos}
+\cliente{Martín Harris}
 \empresaCliente{Trenes Argentinos}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
@@ -64,6 +69,7 @@
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 1.0      & Creación del documento                                          & 27/06/2020 \\ \hline
 1.1      & Avance sobre puntos 1 a 6 del documento                                                               & 09/07/2020 \\ \hline
+1.2      & Avance sobre puntos 7 a 12 del documento                                                               & 27/07/2020 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -81,7 +87,7 @@ Buenos Aires, \fechaInicioName
 \vspace{2cm}
 
 Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sitio web para la configuración y muestra de resultados de los ensayos a realizar por el sistema probador de relés ferroviarios.
-Tendrá un presupuesto preliminar estimado de 200 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Tendrá un presupuesto preliminar estimado de 600 hs de trabajo y sin presupuesto asignado, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -102,9 +108,9 @@ Se adjunta a esta acta la planificación inicial.
 \section{Descripción técnica-conceptual del Proyecto a realizar}
 \label{sec:descripcion}
 
-La organización GICSAFE se caracteriza por su misión de realizar proyectos con alto impacto social y económico.
+La organización CONICET-GICSAFe se caracteriza por su misión de realizar proyectos ferroviarios basados en electrónica e informática con alto impacto social y económico.
 
-En el marco del proyecto '\title', este subproyecto tiene por finalidad la realización de una interfaz de usuario web, que permita al personal encargado de los ensayos aplicados a los relés ferroviarios, configurar facilmente dichos ensayos y poder visualizar de forma resumida y clara los resultados de los mismos.
+En el marco del proyecto '\title', este subproyecto tiene por finalidad la realización de una interfaz de usuario web, que permita al personal encargado de los ensayos aplicados a los relés ferroviarios, configurar fácilmente dichos ensayos y poder visualizar de forma resumida y clara los resultados de los mismos.
 
 El presente proyecto se destaca  especialmente por ser el primero de su tipo en Argentina. No hay hasta el momento un emprendimiento destinado a la fabricación y prueba local de relés de tipo ferroviario.
 
@@ -134,9 +140,10 @@ En la Figura \ref{fig:diagBloques} se presenta el diagrama conceptual del sistem
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
 Cliente       & \clientename      &\empclientename	& -      	\\ \hline
-Impulsor      & GICSAFE           & GICSAFE        	& -        	\\ \hline
+Impulsor      & Mariano Fernandez Soler  & Trenes Argentinos   	& -        	\\ \hline
 Responsable   & \authorname       & GICSAFE        	& Alumno 	\\ \hline
-Orientador    & \supname	      & \pertesupname 	& Director	Trabajo final \\ \hline
+Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hline
+Colaborador    & Ariel Lutemberg  & GICSAFE 	& Director Posgrado \\ \hline
 Equipo        & Gustavo Ramoscelli& GICSAFE        	& Docente        	\\ \hline
 Usuario final & \clientename      &\empclientename 	& -       	\\ \hline
 \end{tabularx}
@@ -156,7 +163,7 @@ El presente proyecto incluye:
 \begin{itemize}
 \item Autenticación de usuarios mediante nombre de usuario y contraseña.
 \item Esquema de autorización de usuarios mediante tres roles diferentes: administrador, configurador y usuario de sólo lectura.
-\item Vista de configuración de ensayos para los tipos 1, 2 y 3.
+\item Vista de configuración para los distintos tipos de ensayos (1, 2 y 3).
 \item Vista de los resultados de cada ensayo realizado.
 \item Persistencia de configuraciones y resultados en base de datos PostGres provista por el cliente.
 \end{itemize}
@@ -170,7 +177,7 @@ El presente proyecto NO incluye:
 \section{3. Supuestos del proyecto}
 \label{sec:supuestos}
 
-Para el desarrollo del presente proyecto supongo:
+Para el desarrollo del presente proyecto se supone:
 
 \begin{itemize}
 \item Los requerimientos no sufrirán modificaciones de consideración durante la implementación del proyecto.
@@ -189,20 +196,20 @@ Para el desarrollo del presente proyecto supongo:
 	\item Las contraseñas de usuario tendrán encriptación AES.
 	\item Habrá tres (3) roles de usuarios: Administrador, Configurador y Usuario de solo lectura.
 	\item Pantalla de login de usuario. Un usuario no autenticado será redirigido a esta pantalla.
-	\item Un usuario Administrador tendrá solo podrá administrar usuarios.
-	\item Un usuario Configurador podrá ulitilzar la funcionalidad relativa a configuración de ensayos. 
-	\item Un usuario de solo lectura podrá ulitilzar la funcionalidad relativa a la visualización de resultados.
+	\item Un usuario Administrador solo podrá administrar usuarios.
+	\item Un usuario Configurador podrá utilizar la funcionalidad relativa a configuración de ensayos. 
+	\item Un usuario de solo lectura podrá utilizar la funcionalidad relativa a la visualización de resultados.
 	\end{enumerate}
-\item Grupo de requerimientos asociados con Configuración de ensayos:
+\item Grupo de requerimientos asociados con configuración de ensayos:
 	\begin{enumerate}
 	\item Pantalla de configuración de ensayo.
 	\item La pantalla permitirá al usuario seleccionar el relé, indicar el tipo de ensayo y los parámetros del mismo.
 	\end{enumerate}
-\item Grupo de requerimientos asociados con Visualización de ensayos:
+\item Grupo de requerimientos asociados con visualización de ensayos:
 	\begin{enumerate}
 	\item Pantalla de listado índice de relés.
 	\item Al seleccionar un relé del listado, se mostrará una pantalla de resultados de ensayos del relé.
-	\item La pantalla de resultados de ensayos del relé mostrará los resultados de los ensayos en forma numérica y gráfica, de fácil interpretación.
+	\item La pantalla de resultados de ensayos del relé mostrará los resultados de los ensayos en forma numérica y gráfica, buscando una facil interpretación por parte del usuario.
 	\end{enumerate}
 	
 \end{enumerate}
@@ -220,111 +227,312 @@ Para el desarrollo del presente proyecto supongo:
 \label{sec:wbs}
 
 \begin{enumerate}
+\item Grupo de tareas de planificación
+	\begin{enumerate}
+	\item Leer documentación del proyecto. (48 hs)
+	\item Reuniones con el equipo. (16 hs)
+	\end{enumerate}
+
+\item Grupo de tareas de preparación
+	\begin{enumerate}
+	\item Organizar herramientas de desarrollo. (16 hs)
+	\item Generación del entorno y el repositorio. (16 hs)
+	\end{enumerate}
+
 \item Grupo de tareas relacionadas con el modelo
 	\begin{enumerate}
 	\item Definir entidades y sus relaciones. (16 hs)
 	\item Crear las migraciones para generar las tablas. (8 hs)
+	\item Crear seeders para las tablas. (8 hs)
 	\item Crear servicio de acceso a base de datos. (16 hs)
-	\item Crear API de acceso a datos. (8 hs)
-	\item Revisar. (2 hs)
+	\item Crear API de acceso a datos. (16 hs)
+	\item Verificación. (8 hs)
 	\end{enumerate}
+
 \item Grupo de tareas relacionadas con usuarios
 	\begin{enumerate}
 	\item Estudiar y agregar plugin de autenticación. (8 hs)
-	\item Generar seed de usuario administrador.
-	\item Estudiar plugin de roles. (8 hs)
-	\item Agregar plugin de roles y definir roles. (8 hs)
-	\item Revisar. (2 hs)
+	\item Estudiar plugin de roles. (16 hs)
+	\item Agregar plugin de roles y definir roles. (16 hs)
+	\item Verificación. (8 hs)
 	\end{enumerate}
+
+\item Grupo de tareas relacionadas con el servidor Nodered
+	\begin{enumerate}
+	\item Implementar recepción e inserción de registros. (24 hs)
+	\end{enumerate}
+
 \item Grupo de tareas relacionadas con configuración de ensayos
 	\begin{enumerate}
-	\item Crear seeders con registros de prueba. (8 hs)
-	\item Implementar solución en Nodered para la inserción de registros. (16 hs)
-	\item Definir vistas de configuración. (8 hs)
+	\item Definir vistas de configuración. (16 hs)
 	\item Implementar componentes Vue. (24 hs)
-	\item Revisar. (2 hs)
+	\item Implementar vistas. (24 hs)
+	\item Verificación. (8 hs)
 	\end{enumerate}
+
 \item Grupo de tareas relacionadas con visualización de ensayos
 	\begin{enumerate}
 	\item Estudiar Google Vue Charts. (8 hs)
-	\item Diseñar vistas para cada tipo de ensayo. (8 hs)
-	\item Implementar componente Vue para cada tipo. (24 hs)
-	\item Revisar. (2 hs)
+	\item Diseñar vistas para cada tipo de ensayo. (16 hs)
+	\item Implementar componente Vue para cada tipo. (48 hs)
+	\item Verificación. (8 hs)
 	\end{enumerate}
+
+\item Grupo de tareas relacionadas con el area de hardware
+	\begin{enumerate}
+	\item Acordar estructuras de datos. (16 hs)
+	\item Reuniones de asistencia e intercambio. (16 hs)
+	\end{enumerate}
+
+\item Grupo de tareas relacionadas con la aprobación
+	\begin{enumerate}
+	\item Realizar los tests de aprobación. (32 hs)
+	\end{enumerate}
+
 \end{enumerate}
 
-Cantidad total de horas: (176 hs)
+Cantidad total de horas: (456 hs)
+
 
 
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
 
-\begin{consigna}{red}
-Armar el AoN a partir del WBS definido en la etapa anterior. 
+\begin{landscape}
 
-%La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
+\begin{tikzpicture}[
+hito/.style={circle, draw=black, thick, minimum size=2cm},
+tarea/.style={rectangle, draw=black, thick, minimum size=2cm, text width=2em, text centered},
+]
+%Nodes
+\node[hito]      (inicio)                              	{Inicio};
+\node[tarea]     (tarea_1_1)       [right=of inicio] 	{Tarea 1.1\\t=6d};
+\node[tarea]     (tarea_1_2)       [below=of tarea_1_1] {Tarea 1.2\\t=2d};
 
-%\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
+\node[tarea]     (tarea_2_1)       [right=of tarea_1_2] {Tarea 2.1\\t=2d};
+\node[tarea]     (tarea_2_2)       [right=of tarea_2_1] {Tarea 2.2\\t=2d};
 
-\end{consigna}
+\node[hito]      (empezar)		   [right=of tarea_2_2] {Listos};
 
-\begin{figure}[htpb]
-\centering 
-\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
-\caption{Diagrama en \textit{Activity on Node}}
-\label{fig:AoN}
-\end{figure}
+\node[tarea]     (tarea_3_1)       [right=of empezar] 	{Tarea 3.1\\t=2d};
+\node[tarea]     (tarea_3_2)       [right=of tarea_3_1] {Tarea 3.2\\t=1d};
+\node[tarea]     (tarea_3_3)       [right=of tarea_3_2] 	{Tarea 3.3\\t=1d};
+\node[tarea]     (tarea_3_4)       [below=of tarea_3_3] 	{Tarea 3.4\\t=2d};
+\node[tarea]     (tarea_3_5)       [below=of tarea_3_4] 	{Tarea 3.5\\t=2d};
+\node[tarea]     (tarea_3_6)       [right=of tarea_3_5] 	{Tarea 3.6\\t=1d};
 
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
+\node[hito]      (modelo_listo)	   [right=of tarea_3_6] {Modelo listo};
+
+\node[tarea]     (tarea_4_1)       [right=of modelo_listo] 	{Tarea 4.1\\t=1d};
+\node[tarea]     (tarea_4_2)       [below=of tarea_4_1] 	{Tarea 4.2\\t=2d};
+\node[tarea]     (tarea_4_3)       [right=of tarea_4_2] 	{Tarea 4.3\\t=2d};
+\node[tarea]     (tarea_4_4)       [right=of tarea_4_3] 	{Tarea 4.4\\t=1d};
+
+\node[tarea]     (tarea_5_1)       [below=of tarea_4_2] 	{Tarea 5.1\\t=3d};
+
+\node[tarea]     (tarea_6_1)       [below=of tarea_5_1] 	{Tarea 6.1\\t=2d};
+\node[tarea]     (tarea_6_2)       [right=of tarea_6_1] 	{Tarea 6.2\\t=3d};
+\node[tarea]     (tarea_6_3)       [below=of tarea_6_2] 	{Tarea 6.3\\t=3d};
+\node[tarea]     (tarea_6_4)       [right=of tarea_6_3] 	{Tarea 6.4\\t=1d};
+
+\node[tarea]     (tarea_7_1)       [below=of tarea_6_3] 	{Tarea 7.1\\t=1d};
+\node[tarea]     (tarea_7_2)       [right=of tarea_7_1] 	{Tarea 7.2\\t=2d};
+\node[tarea]     (tarea_7_3)       [below=of tarea_7_2] 	{Tarea 7.3\\t=6d};
+\node[tarea]     (tarea_7_4)       [right=of tarea_7_3] 	{Tarea 7.4\\t=1d};
+
+\node[tarea]     (tarea_8_1)       [below=of tarea_3_1] 	{Tarea 8.1\\t=2d};
+\node[tarea]     (tarea_8_2)       [right=of tarea_8_1] 	{Tarea 8.2\\t=2d};
+
+\node[hito]      (implementado)	   [right=of tarea_7_4] {Implementado};
+
+\node[tarea]     (tarea_9_1)       [right=of implementado] 	{Tarea 9.1\\t=4d};
+
+\node[hito]      (fin)	   [right=of tarea_9_1] {Fin};
+
+%Lines
+\draw[->] (tarea_1_1.east) -- (tarea_1_2.west);
+
+\end{tikzpicture}
+\end{landscape}
 
 
 
 \section{8. Diagrama de Gantt}
 \label{sec:gantt}
 
-\begin{consigna}{red}
-Utilizar el software Gantter for Google Drive o alguno similar para dibujar el diagrama de Gantt.
+%\begin{landscape}
+\newpage
 
-Existen muchos programas y recursos \textit{online} para hacer diagramas de gantt, entre las cuales destacamos:
+\begin{ganttchart}[
+canvas/.append style={fill=none, draw=black!5, line width=.75pt},
+hgrid style/.style={draw=black!5, line width=.75pt},
+vgrid={*1{draw=black!5, line width=.75pt}},
+today=1,
+today rule/.style={
+draw=black!64,
+dash pattern=on 3.5pt off 4.5pt,
+line width=1.5pt
+},
+today label font=\small\bfseries,
+title/.style={draw=none, fill=none},
+title label font=\bfseries\footnotesize,
+title label node/.append style={below=7pt},
+include title in canvas=false,
+bar label font=\mdseries\small\color{black!70},
+bar label node/.append style={left=2cm},
+bar/.append style={draw=none, fill=black!63},
+bar incomplete/.append style={fill=grey},
+bar progress label font=\mdseries\footnotesize\color{black!70},
+group incomplete/.append style={fill=blue},
+group left shift=0,
+group right shift=0,
+group height=.3,
+group peaks tip position=0,
+group label node/.append style={left=.6cm},
+group progress label font=\bfseries\small,
+link/.style={-latex, line width=1pt, red},
+link label font=\scriptsize\bfseries,
+link label node/.append style={below left=-2pt and 0pt},
+]{1}{120}
 
-\begin{itemize}
-\item Planner
-\item GanttProject
-\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
-\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
-\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
-\end{itemize}
+\gantttitle{Software probador de relés de tipo ferroviario}{120} \\[grid]
+\gantttitle{Agosto}{30}
+\gantttitle{Septiembre}{30}
+\gantttitle{Octubre}{30}
+\gantttitle{Noviembre}{30}\\
+\gantttitle[
+title label node/.append style={below left=7pt and -3pt}
+]{Día:\quad1}{1}
+\gantttitlelist{2,...,120}{1} \\
+\ganttgroup[progress=0]{Planificación}{1}{8} \\
+\ganttbar[
+name=tarea_1_1
+]{\textbf{Tarea 1.1}}{1}{6} \\
+\ganttbar[
+name=tarea_1_2
+]{\textbf{Tarea 1.2}}{7}{8} \\
 
-Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
-Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
+\ganttgroup[progress=0]{Preparación}{9}{12} \\
+\ganttbar[
+name=tarea_2_1
+]{\textbf{Tarea 2.1}}{9}{10} \\
+\ganttbar[
+name=tarea_2_2
+]{\textbf{Tarea 2.2}}{11}{12} \\
 
-Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
-Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
-Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
+\ganttgroup[progress=0]{Modelo}{13}{18} \\
+\ganttbar[
+name=tarea_3_1
+]{\textbf{Tarea 3.1}}{13}{14} \\
+\ganttbar[
+name=tarea_3_2
+]{\textbf{Tarea 3.2}}{15}{15} \\
+\ganttbar[
+name=tarea_3_3
+]{\textbf{Tarea 3.3}}{16}{16} \\
+\ganttbar[
+name=tarea_3_4
+]{\textbf{Tarea 3.4}}{16}{17} \\
+\ganttbar[
+name=tarea_3_5
+]{\textbf{Tarea 3.5}}{16}{17} \\
+\ganttbar[
+name=tarea_3_6
+]{\textbf{Tarea 3.6}}{18}{18} \\
 
-En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realizado con el paquete de \textit{pgfgantt}. En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
+\ganttgroup[progress=0]{Usuarios}{19}{24} \\
+\ganttbar[
+name=tarea_4_1
+]{\textbf{Tarea 4.1}}{19}{19} \\
+\ganttbar[
+name=tarea_4_2
+]{\textbf{Tarea 4.2}}{20}{21} \\
+\ganttbar[
+name=tarea_4_3
+]{\textbf{Tarea 4.3}}{22}{23} \\
+\ganttbar[
+name=tarea_4_4
+]{\textbf{Tarea 4.4}}{24}{24} \\
 
-\begin{figure}[htbp]
-\begin{center}
-\begin{ganttchart}{1}{12}
-  \gantttitle{2020}{12} \\
-  \gantttitlelist{1,...,12}{1} \\
-  \ganttgroup{Group 1}{1}{7} \\
-  \ganttbar{Task 1}{1}{2} \\
-  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
-  \ganttmilestone{Milestone o hito}{7} \ganttnewline
-  \ganttbar{Final Task}{8}{12}
-  \ganttlink{elem2}{elem3}
-  \ganttlink{elem3}{elem4}
+\ganttgroup[progress=0]{Nodered}{19}{21} \\
+\ganttbar[
+name=tarea_5_1
+]{\textbf{Tarea 5.1}}{19}{21} \\
+
+\ganttgroup[progress=0]{Config ensayos}{19}{27} \\
+\ganttbar[
+name=tarea_6_1
+]{\textbf{Tarea 6.1}}{19}{20} \\
+\ganttbar[
+name=tarea_6_2
+]{\textbf{Tarea 6.2}}{21}{23} \\
+\ganttbar[
+name=tarea_6_3
+]{\textbf{Tarea 6.3}}{24}{26} \\
+\ganttbar[
+name=tarea_6_4
+]{\textbf{Tarea 6.4}}{27}{27} \\
+
+\ganttgroup[progress=0]{Visualización ensayos}{19}{28} \\
+\ganttbar[
+name=tarea_7_1
+]{\textbf{Tarea 7.1}}{19}{19} \\
+\ganttbar[
+name=tarea_7_2
+]{\textbf{Tarea 7.2}}{20}{21} \\
+\ganttbar[
+name=tarea_7_3
+]{\textbf{Tarea 7.3}}{22}{27} \\
+\ganttbar[
+name=tarea_7_4
+]{\textbf{Tarea 7.4}}{28}{28} \\
+
+\ganttgroup[progress=0]{Relación con hardware}{19}{23} \\
+\ganttbar[
+name=tarea_8_1
+]{\textbf{Tarea 8.1}}{19}{20} \\
+\ganttbar[
+name=tarea_8_2
+]{\textbf{Tarea 8.2}}{21}{22} \\
+
+\ganttgroup[progress=0]{Tests de aprobación}{29}{33} \\
+\ganttbar[
+name=tarea_9_1
+]{\textbf{Tarea 9.1}}{29}{33} \\
+
+%Links
+\ganttlink{tarea_1_1}{tarea_1_2}
+\ganttlink{tarea_1_2}{tarea_2_1}
+\ganttlink{tarea_2_1}{tarea_2_2}
+
+\ganttlink{tarea_2_2}{tarea_3_1}
+\ganttlink{tarea_3_1}{tarea_3_2}
+\ganttlink{tarea_3_2}{tarea_3_3}
+\ganttlink{tarea_3_2}{tarea_3_4}
+\ganttlink{tarea_3_2}{tarea_3_5}
+\ganttlink{tarea_3_5}{tarea_3_6}
+
+\ganttlink{tarea_3_6}{tarea_4_1}
+\ganttlink{tarea_4_1}{tarea_4_2}
+\ganttlink{tarea_4_2}{tarea_4_3}
+\ganttlink{tarea_4_3}{tarea_4_4}
+
+\ganttlink{tarea_3_6}{tarea_5_1}
+
+\ganttlink{tarea_3_6}{tarea_6_1}
+
+\ganttlink{tarea_3_6}{tarea_7_1}
+
+\ganttlink{tarea_3_1}{tarea_8_1}
+
+\ganttlink{tarea_7_4}{tarea_9_1}
+\ganttlink{tarea_6_4}{tarea_9_1}
+\ganttlink{tarea_4_4}{tarea_9_1}
+
 \end{ganttchart}
-\end{center}
-\caption{Diagrama de gantt de ejemplo}
-\label{fig:gantt}
-\end{figure}
 
-\end{consigna}
+%\end{landscape}
+
 
 \section{9. Matriz de uso de recursos de materiales}
 \label{sec:recursos}
@@ -333,15 +541,38 @@ En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realiza
 \begin{table}[htpb]
 \label{tab:recursos}
 \centering
-\begin{tabularx}{\linewidth}{@{}|c|X|X|X|X|X|@{}}
+\begin{tabular}{|l|l|c|c|c|}
 \hline
-\cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Recursos requeridos (horas)} \\ \cline{3-6} 
-\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Nombre \\ tarea\end{tabular}} & Material 1 & Material 2 & Material 3 & Material 4 \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
-\end{tabularx}%
+\multicolumn{1}{|c|}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}}} & \multicolumn{1}{c|}{\multirow{2}{*}{Nombre tarea}} & \multicolumn{3}{c|}{Uso de recursos [hs]} \\ \cline{3-5} 
+\multicolumn{1}{|c|}{}                                                                      & \multicolumn{1}{c|}{}                              & Notebook 1 & Notebook 2 & Servidor \\ \hline
+
+1.1 & Leer documentación del proyecto  & 48 &  &  \\ \hline
+1.2 & Reuniones con el equipo & 16 &  &  \\ \hline
+2.1 & Organizar herramientas de desarrollo & 16 &  & 8 \\ \hline
+2.2 & Generación del entorno y el repositorio & 16 &  & 8 \\ \hline
+3.1 & Definir entidades y sus relaciones & 16 &  &  \\ \hline
+3.2 & Crear las migraciones para generar las tablas & 8 &  &  \\ \hline
+3.3 & Crear Seeders para las tablas & 8 &  &  \\ \hline
+3.4 & Crear servicio de acceso a base de datos & 16 &  &  \\ \hline
+3.5 & Crear API de acceso a datos & 16 &  &  \\ \hline
+3.6 & Verificación & 8 &  &  \\ \hline
+4.1 & Estudiar y agregar plugin de autenticación & 8 &  &  \\ \hline
+4.2 & Estudiar plugin de roles & 16 &  &  \\ \hline
+4.3 & Agregar plugin de roles y definir roles & 16 &  &  \\ \hline
+4.4 & Verificación & 8 &  &  \\ \hline
+5.1 & Implementar recepción e inserción de registros & 24 &  & 24 \\ \hline
+6.1 & Definir vistas de configuración & 16 &  &  \\ \hline
+6.2 & Implementar componentes Vue & 24 &  &  \\ \hline
+6.3 & Implementar vistas & 24 &  &  \\ \hline
+6.4 & Verificación & 8 &  &  \\ \hline
+7.1 & Estudiar Google Vue Charts & 8 &  &  \\ \hline
+7.2 & Diseñar vistas para cada tipo de ensayo & 16 &  &  \\ \hline
+7.3 & Implementar componente Vue para cada tipo & 48 &  &  \\ \hline
+7.4 & Verificación & 8 &  &  \\ \hline
+8.1 & Acordar estructuras de datos & 16 &  &  \\ \hline
+8.2 & Reuniones de asistencia e intercambio & 16 &  &  \\ \hline
+9.1 & Realizar los tests de aprobación & 32 &  & 32 \\ \hline
+\end{tabular}
 \end{table}
 
 
