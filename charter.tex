@@ -4,6 +4,7 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \usepackage{pgfgantt}
+\usepackage{comment}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
 \titulo{Software probador de relé ferroviario} 
@@ -70,6 +71,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 1.0      & Creación del documento                                          & 27/06/2020 \\ \hline
 1.1      & Avance sobre puntos 1 a 6 del documento                                                               & 09/07/2020 \\ \hline
 1.2      & Avance sobre puntos 7 a 12 del documento                                                               & 27/07/2020 \\ \hline
+1.3      & Avance sobre puntos 13 a 17 del documento                                                               & 05/08/2020 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -190,6 +192,7 @@ Para el desarrollo del presente proyecto se supone:
 \label{sec:requerimientos}
 
 \begin{enumerate}
+
 \item Grupo de requerimientos asociados con Usuarios:
 	\begin{enumerate}
 	\item Los usuarios del sistema deberán autenticarse para usarlo.
@@ -200,16 +203,24 @@ Para el desarrollo del presente proyecto se supone:
 	\item Un usuario Configurador podrá utilizar la funcionalidad relativa a configuración de ensayos. 
 	\item Un usuario de solo lectura podrá utilizar la funcionalidad relativa a la visualización de resultados.
 	\end{enumerate}
+
 \item Grupo de requerimientos asociados con configuración de ensayos:
 	\begin{enumerate}
 	\item Pantalla de configuración de ensayo.
 	\item La pantalla permitirá al usuario seleccionar el relé, indicar el tipo de ensayo y los parámetros del mismo.
+	\item Los datos indicados para el ensayo serán validados.
 	\end{enumerate}
+
 \item Grupo de requerimientos asociados con visualización de ensayos:
 	\begin{enumerate}
 	\item Pantalla de listado índice de relés.
 	\item Al seleccionar un relé del listado, se mostrará una pantalla de resultados de ensayos del relé.
 	\item La pantalla de resultados de ensayos del relé mostrará los resultados de los ensayos en forma numérica y gráfica, buscando una facil interpretación por parte del usuario.
+	\end{enumerate}
+
+\item Grupo de requerimientos asociados con la persistencia de datos:
+	\begin{enumerate}
+	\item Todos los datos serán guardados en la base de datos del servidor provisto por Trenes.
 	\end{enumerate}
 	
 \end{enumerate}
@@ -350,7 +361,7 @@ tarea/.style={rectangle, draw=black, thick, minimum size=2cm, text width=2em, te
 \node[hito]      (fin)	   [right=of tarea_9_1] {Fin};
 
 %Lines
-\draw[->] (tarea_1_1.east) -- (tarea_1_2.west);
+%\draw[->] (tarea_1_1.east) -- (tarea_1_2.west);
 
 \end{tikzpicture}
 \end{landscape}
@@ -590,6 +601,8 @@ IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
 
 \end{consigna}
 
+\begin{comment}
+
 \begin{table}[htpb]
 \centering
 \begin{tabularx}{\linewidth}{@{}|X|c|r|r|@{}}
@@ -646,6 +659,7 @@ Descripción &
 \end{tabularx}%
 \end{table}
 
+\end{comment}
 
 \section{11. Matriz de asignación de responsabilidades}
 \label{sec:responsabilidades}
@@ -673,11 +687,34 @@ Establecer la matriz de asignación de responsabilidades y el manejo de la autor
   \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea} &
   \authorname &
   \supname &
-  Nombre de alguien &
+  Adrian Laiuppa &
   \clientename \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
+1.1 & Leer documentación del proyecto  & P & S & S & A \\ \hline
+1.2 & Reuniones con el equipo & P & P & P & I \\ \hline
+2.1 & Organizar herramientas de desarrollo & P & A &  & \\ \hline
+2.2 & Generación del entorno y el repositorio & P & A &  &  \\ \hline
+3.1 & Definir entidades y sus relaciones & P & A &  &  \\ \hline
+3.2 & Crear las migraciones para generar las tablas & P & A &  &  \\ \hline
+3.3 & Crear Seeders para las tablas & P & A &  &  \\ \hline
+3.4 & Crear servicio de acceso a base de datos & P & A &  &  \\ \hline
+3.5 & Crear API de acceso a datos & P & A &  &  \\ \hline
+3.6 & Verificación & S & P & A &  \\ \hline
+4.1 & Estudiar y agregar plugin de autenticación & P &  &  &  \\ \hline
+4.2 & Estudiar plugin de roles & P & I & I &  \\ \hline
+4.3 & Agregar plugin de roles y definir roles & P & A & I &  \\ \hline
+4.4 & Verificación & S & P & A &  \\ \hline
+5.1 & Implementar recepción e inserción de registros & P & A & I & \\ \hline
+6.1 & Definir vistas de configuración & P & A &  &  \\ \hline
+6.2 & Implementar componentes Vue & P & A &  &  \\ \hline
+6.3 & Implementar vistas & P & A &  &  \\ \hline
+6.4 & Verificación & S & P &  &  \\ \hline
+7.1 & Estudiar Google Vue Charts & P &  &  &  \\ \hline
+7.2 & Diseñar vistas para cada tipo de ensayo & P & A &  &  \\ \hline
+7.3 & Implementar componente Vue para cada tipo & P & A &  &  \\ \hline
+7.4 & Verificación & S & P & S &  \\ \hline
+8.1 & Acordar estructuras de datos & P & S & S &  \\ \hline
+8.2 & Reuniones de asistencia e intercambio & P &  &  &  \\ \hline
+9.1 & Realizar los tests de aprobación & S & P & S & A \\ \hline
 \end{tabular}%
 }
 \end{table}
@@ -762,6 +799,72 @@ Riesgo 2: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de
 Riesgo 3: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación)
 
 \end{consigna}
+
+
+R1: El sistema queda fuera de servicio.
+\begin{itemize}
+\item Severidad (S): 10, porque el sistema debería estar siempre disponible.
+\item Ocurrencia (O): 4, es poco probable dado el uso de servidores de reconocido prestigio.
+\end{itemize}
+
+R2: El sitio web está lento.
+\begin{itemize}
+\item Severidad (S): 6, sería incómodo, pero no imposible, el uso.
+\item Ocurrencia (O): 4, estimamos que la lentitud ocurre con poca frecuencia.
+\end{itemize}
+
+R3: Falla en la validación de datos ingresados (bug).
+\begin{itemize}
+\item Severidad (S): 10, habría datos incorrectos en la base de datos. 
+\item Ocurrencia (O): 5, un error inadvertido de programación.
+\end{itemize}
+
+R4: Error en la carga de datos
+\begin{itemize}
+\item Severidad (S): 8, es grave pero se puede rastrear.
+\item Ocurrencia (O): 4, error de tipeo que puede ocurrir.
+\end{itemize}
+
+R5: Las pantallas no son suficientemente claras para el usuario.
+\begin{itemize}
+\item Severidad (S): 6, no es un problema crítico.
+\item Ocurrencia (O): 3, son pantallas sencillas.
+\end{itemize}
+
+R6: Alguna cuenta de usuario es hackeada.
+\begin{itemize}
+\item Severidad (S): 10, es una violación de seguridad.
+\item Ocurrencia (O): 4, el servidor es privado, y son pocos usuarios.
+\end{itemize}
+
+R7: La conexión con la base de datos se pierde, y los resultados que llegan no pueden guardarse.
+\begin{itemize}
+\item Severidad (S): 8, se puede repetir el ensayo.
+\item Ocurrencia (O): 4, 
+\end{itemize}
+
+\begin{table}[htpb]
+\centering
+\begin{tabularx}{\linewidth}{@{}|X|c|c|c|c|c|c|@{}}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
+R1 & 10 & 4 & 40 &  &  &    \\ \hline
+R2 & 6 & 4 & 24 &  &  &    \\ \hline
+R3 & 10 & 5 & 50 &  &  &    \\ \hline
+R4 & 8 & 4 & 32 &  &  &    \\ \hline
+R5 & 6 & 3 & 18 &  &  &    \\ \hline
+R6 & 10 & 4 & 40 &  &  &    \\ \hline
+R7 & 8 & 4 & 32 &  &  &    \\ \hline
+\end{tabularx}%
+\end{table}
+
+Criterio adoptado: 
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a ....
+
+Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
+
+c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
 
 
 \section{13. Gestión de la calidad}
