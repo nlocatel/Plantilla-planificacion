@@ -112,7 +112,7 @@ Se adjunta a esta acta la planificación inicial.
 
 La organización CONICET-GICSAFe se caracteriza por su misión de realizar proyectos ferroviarios basados en electrónica e informática con alto impacto social y económico.
 
-En el marco del proyecto '\title', este subproyecto tiene por finalidad la realización de una interfaz de usuario web, que permita al personal encargado de los ensayos aplicados a los relés ferroviarios, configurar fácilmente dichos ensayos y poder visualizar de forma resumida y clara los resultados de los mismos.
+En el marco del proyecto ``\ttitle'', este subproyecto tiene por finalidad la realización de una interfaz de usuario web, que permita al personal encargado de los ensayos aplicados a los relés ferroviarios, configurar fácilmente dichos ensayos y poder visualizar de forma resumida y clara los resultados de los mismos.
 
 El presente proyecto se destaca  especialmente por ser el primero de su tipo en Argentina. No hay hasta el momento un emprendimiento destinado a la fabricación y prueba local de relés de tipo ferroviario.
 
@@ -199,23 +199,23 @@ Para el desarrollo del presente proyecto se supone:
 	\item Las contraseñas de usuario tendrán encriptación AES.
 	\item Habrá tres (3) roles de usuarios: Administrador, Configurador y Usuario de solo lectura.
 	\item Pantalla de login de usuario. Un usuario no autenticado será redirigido a esta pantalla.
-	\item Un usuario Administrador solo podrá administrar usuarios.
-	\item Un usuario Configurador podrá utilizar la funcionalidad relativa a configuración de ensayos. 
-	\item Un usuario de solo lectura podrá utilizar la funcionalidad relativa a la visualización de resultados.
+	\item Un usuario Administrador súlo podrá administrar usuarios.
+	\item Un usuario Configurador sólo podrá utilizar la funcionalidad relativa a configuración de ensayos. 
+	\item Un usuario de solo lectura sólo podrá utilizar la funcionalidad relativa a la visualización de resultados.
 	\end{enumerate}
 
 \item Grupo de requerimientos asociados con configuración de ensayos:
 	\begin{enumerate}
-	\item Pantalla de configuración de ensayo.
-	\item La pantalla permitirá al usuario seleccionar el relé, indicar el tipo de ensayo y los parámetros del mismo.
+	\item Vista de configuración de ensayo.
+	\item La vista permitirá al usuario seleccionar el relé, indicar el tipo de ensayo y los parámetros del mismo.
 	\item Los datos indicados para el ensayo serán validados.
 	\end{enumerate}
 
 \item Grupo de requerimientos asociados con visualización de ensayos:
 	\begin{enumerate}
-	\item Pantalla de listado índice de relés.
+	\item Vista de listado índice de relés.
 	\item Al seleccionar un relé del listado, se mostrará una pantalla de resultados de ensayos del relé.
-	\item La pantalla de resultados de ensayos del relé mostrará los resultados de los ensayos en forma numérica y gráfica, buscando una facil interpretación por parte del usuario.
+	\item La vista de resultados de ensayos del relé mostrará los resultados de los ensayos en forma numérica y gráfica, buscando una facil interpretación por parte del usuario.
 	\end{enumerate}
 
 \item Grupo de requerimientos asociados con la persistencia de datos:
@@ -661,10 +661,33 @@ Descripción &
 
 \end{comment}
 
+\newpage
 \section{11. Matriz de asignación de responsabilidades}
 \label{sec:responsabilidades}
+
+\begin{comment}
 \begin{consigna}{red}
 Establecer la matriz de asignación de responsabilidades y el manejo de la autoridad completando la siguiente tabla:
+
+
+{\footnotesize
+Referencias:
+\begin{itemize}
+	\item P = Responsabilidad Primaria
+	\item S = Responsabilidad Secundaria
+	\item A = Aprobación
+	\item I = Informado
+	\item C = Consultado
+\end{itemize}
+} %footnotesize
+
+Una de las columnas debe ser para el Director, ya que se supone que participará en el proyecto.
+A su vez se debe cuidar que no queden muchas tareas seguidas sin ``A'' o ``I''.
+
+Importante: es redundante poner ``I/A'' o ``I/C'', porque para aprobarlo o responder consultas primero la persona debe ser informada.
+
+\end{consigna}
+\end{comment}
 
 \begin{table}[htpb]
 \centering
@@ -719,27 +742,11 @@ Establecer la matriz de asignación de responsabilidades y el manejo de la autor
 }
 \end{table}
 
-{\footnotesize
-Referencias:
-\begin{itemize}
-	\item P = Responsabilidad Primaria
-	\item S = Responsabilidad Secundaria
-	\item A = Aprobación
-	\item I = Informado
-	\item C = Consultado
-\end{itemize}
-} %footnotesize
-
-Una de las columnas debe ser para el Director, ya que se supone que participará en el proyecto.
-A su vez se debe cuidar que no queden muchas tareas seguidas sin ``A'' o ``I''.
-
-Importante: es redundante poner ``I/A'' o ``I/C'', porque para aprobarlo o responder consultas primero la persona debe ser informada.
-
-\end{consigna}
 
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
 
+\begin{comment}
 \begin{consigna}{red}
 a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
  
@@ -762,10 +769,12 @@ Riesgo 3:
 \item Severidad (S): 
 \item Ocurrencia (O):
 \end{itemize}
+\end{comment}
 
 
 b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 
+\begin{comment}
 \begin{table}[htpb]
 \centering
 \begin{tabularx}{\linewidth}{@{}|X|c|c|c|c|c|c|@{}}
@@ -799,6 +808,7 @@ Riesgo 2: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de
 Riesgo 3: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación)
 
 \end{consigna}
+\end{comment}
 
 
 R1: El sistema queda fuera de servicio.
@@ -840,7 +850,7 @@ R6: Alguna cuenta de usuario es hackeada.
 R7: La conexión con la base de datos se pierde, y los resultados que llegan no pueden guardarse.
 \begin{itemize}
 \item Severidad (S): 8, se puede repetir el ensayo.
-\item Ocurrencia (O): 4, 
+\item Ocurrencia (O): 4, los servicios son bastantes estables
 \end{itemize}
 
 \begin{table}[htpb]
@@ -849,46 +859,243 @@ R7: La conexión con la base de datos se pierde, y los resultados que llegan no 
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-R1 & 10 & 4 & 40 &  &  &    \\ \hline
-R2 & 6 & 4 & 24 &  &  &    \\ \hline
-R3 & 10 & 5 & 50 &  &  &    \\ \hline
-R4 & 8 & 4 & 32 &  &  &    \\ \hline
+R1 & 10 & 4 & 40 & 10 & 2 & 20    \\ \hline
+R2 & 6 & 4 & 24 & 6 & 1 & 6   \\ \hline
+R3 & 10 & 5 & 50 & 10 & 1 & 10   \\ \hline
+R4 & 8 & 4 & 32 & 8 & 1 & 8   \\ \hline
 R5 & 6 & 3 & 18 &  &  &    \\ \hline
-R6 & 10 & 4 & 40 &  &  &    \\ \hline
-R7 & 8 & 4 & 32 &  &  &    \\ \hline
+R6 & 10 & 4 & 40 & 10 & 2 & 20   \\ \hline
+R7 & 8 & 4 & 32 & 8 & 1 & 8    \\ \hline
 \end{tabularx}%
 \end{table}
 
 Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a ....
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 25
 
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
 
+R1: No se escatimará en la calidad y recursos del servidor.
+\begin{itemize}
+\item Severidad (S): 10, porque el sistema debería estar siempre disponible.
+\item Ocurrencia (O): 2, un mejor servidor reduce las chances de quedar fuera de servicio.
+\end{itemize}
+
+R2: El servidor tendrá recursos para atender más peticiones de las esperadas.
+\begin{itemize}
+\item Severidad (S): 6, sería incómodo, pero no imposible, el uso.
+\item Ocurrencia (O): 1, se reduce la probabilidad de saturación del servidor.
+\end{itemize}
+
+R3: Se reforzará la verificación y los tests.
+\begin{itemize}
+\item Severidad (S): 10, habría datos incorrectos en la base de datos. 
+\item Ocurrencia (O): 1, se reduce los riesgos de dejar un error inadvertido.
+\end{itemize}
+
+R4: Se contemplarán todos los casos de ingreso.
+\begin{itemize}
+\item Severidad (S): 8, es grave pero se puede rastrear.
+\item Ocurrencia (O): 1, la validación reforzada casi anula el riesgo.
+\end{itemize}
+
+R6: Política de fortaleza y caducidad de password, así como acceso por IP.
+\begin{itemize}
+\item Severidad (S): 10, es una violación de seguridad.
+\item Ocurrencia (O): 2, ya queda bastante cubierta la posibilidad de accesos no autorizados.
+\end{itemize}
+
+R7: Se puede usar redundancia de base de datos, con esquema de replicación.
+\begin{itemize}
+\item Severidad (S): 8, se puede repetir el ensayo.
+\item Ocurrencia (O): 1, la replicación aumenta la disponibilidad e integridad del recurso.
+\end{itemize}
+
 
 \section{13. Gestión de la calidad}
 \label{sec:calidad}
 
+\begin{comment}
 \begin{consigna}{red}
 Para cada uno de los requerimientos del proyecto indique:
-\begin{itemize} 
-\item Req \#1: Copiar acá el requerimiento.
+
+\begin{itemize}
+\item Req \#1: Copiar acá el requerimiento
 
 Verificación y validación:
 
 \begin{itemize}
 \item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Detallar 
+Detallar
 \item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Detallar  
-\end{itemize}
-
+Detallar
 \end{itemize}
 
 Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, etc.
 
 \end{consigna}
+\end{comment}
+
+\begin{itemize}
+\item Req \#1: Los usuarios del sistema deberán autenticarse para usarlo
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Preguntar si la funcionalidad está implementada. Comprobarlo haciendo una prueba.
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrar al usuario el proceso de validación de forma práctica. 
+\end{itemize}
+
+\item Req \#2: Las contraseñas de usuario tendrán encriptación AES
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Comprobar el tipo de encriptación en el código. 
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrar al cliente el diseño de la base de datos.
+\end{itemize}
+
+\item Req \#3: Habrá tres (3) roles de usuarios: Administrador, Configurador y Usuario de solo lectura
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Comprobarlo en la implementación. 
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrar al cliente que en función del tipo de usuario, las funciones disponibles varían.
+\end{itemize}
+
+\item Req \#4: Pantalla de login de usuario. Un usuario no autenticado será redirigido a esta pantalla.
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Test de verificación.
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrarlo al cliente en forma práctica.
+\end{itemize}
+
+\item Req \#5: Un usuario Administrador solo podrá administrar usuarios.
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Verificar que la única opción disponible para un usuario administrador sea la de configurar usuarios.
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrarlo al cliente en forma práctica.
+\end{itemize}
+
+\item Req \#6: Un usuario Configurador solo podrá utilizar la funcionalidad relativa a configuración de ensayos.
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Verificar que la única opción disponible para un usuario configurador sea la de configurar ensayos.
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrarlo al cliente en forma práctica.
+\end{itemize}
+
+\item Req \#7: Un usuario de solo lectura sólo podrá utilizar la funcionalidad relativa a la visualización de resultados.
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Verificar que la única opción disponible para un usuario de solo lectura sea la de visualizar ensayos.
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrarlo al cliente en forma práctica.
+\end{itemize}
+
+\item Req \#8: Vista de configuración de ensayo.
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Testear la vista de configuración de ensayo.
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrar al cliente la vista.
+\end{itemize}
+
+\item Req \#9: La vista permitirá al usuario seleccionar el relé, indicar el tipo de ensayo y los parámetros del mismo.
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Testear la vista de configuración de ensayo.
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrar al cliente la operación de la vista.
+\end{itemize}
+
+\item Req \#10: Los datos indicados para el ensayo serán validados.
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Chequear las validaciones en el código, así como la operación de la vista, comprobando los mensajes de validación al usuario.
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrar al cliente en forma práctica, los mensajes de validación.
+\end{itemize}
+
+\item Req \#11: Vista de listado índice de relés.
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Chequear la vista índice de relés.
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrar al cliente la vista.
+\end{itemize}
+
+\item Req \#12: Al seleccionar un relé del listado, se mostrará una pantalla de resultados de ensayos del relé.
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Chequear el comportamiento esperado.
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrar al cliente el comportamiento.
+\end{itemize}
+
+\item Req \#13: La vista de resultados de ensayos del relé mostrará los resultados de los ensayos en forma numérica y gráfica, buscando una facil interpretación por parte del usuario.
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Chequear el comportamiento esperado.
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrar al cliente la vista, e indagar sobre el entendimiento de la misma.
+\end{itemize}
+
+\item Req \#14: Todos los datos serán guardados en la base de datos del servidor provisto por el cliente.
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Chequear la base de datos. Realizar ensayos y comprobar que los datos recibidos son guardados de manera completa.
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrar al cliente una simulación de ensayo recibido y cómo estos se guardan en la base de datos objetivo.
+\end{itemize}
+
+
+\end{itemize}
+
+
 
 \section{14. Comunicación del proyecto}
 \label{sec:comunicaciones}
@@ -904,39 +1111,45 @@ El plan de comunicación del proyecto es el siguiente:
 \begin{table}[htpb]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|c|c|}
+\begin{tabular}{|l|c|c|c|c|c|}
 \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}PLAN DE COMUNICACIÓN DEL PROYECTO}           \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 ¿Qué comunicar? & Audiencia & Propósito & Frecuencia & Método de comunicac. & Responsable \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
+Avances en el diseño & Equipo & Informar & Semanal & Email & \authorname \\ \hline
+Avances en la implementación & Equipo & Informar Revisar & Semanal & Reunión & \authorname \\ \hline
+Imprevistos & Todos & Resolver Acordar & Cuando ocurra & Reunión & \authorname \\ \hline
 \end{tabular}%
 }
 \end{table}
 
+
 \section{15. Gestión de Compras}
 \label{sec:compras}
 
+\begin{comment}
 \begin{consigna}{red}
 En caso de tener que comprar elementos o contratar servicios:
 a) Explique con qué criterios elegiría a un proveedor.
 b) Redacte el Statement of Work correspondiente.
 \end{consigna}
+\end{comment}
 
+NO HAY COMPRAS INVOLUCRADAS
+
+\newpage
 \section{16. Seguimiento y control}
 \label{sec:seguimiento}
 
+\begin{comment}
 \begin{consigna}{red}
 Para cada tarea del proyecto establecer la frecuencia y los indicadores con los se seguirá su avance y quién será el responsable de hacer dicho seguimiento y a quién debe comunicarse la situación (en concordancia con el Plan de Comunicación del proyecto).
 
 El indicador de avance tiene que ser algo medible, mejor incluso si se puede medir en \% de avance. Por ejemplo,se pueden indicar en esta columna cosas como ``cantidad de conexiones ruteadeas'' o ``cantidad de funciones implementadas'', pero no algo genérico y ambiguo como ``\%'', porque el lector no sabe porcentaje de qué cosa.
 
 \end{consigna}
+\end{comment}
 
 \begin{table}[!htpb]
 \centering
@@ -946,18 +1159,42 @@ El indicador de avance tiene que ser algo medible, mejor incluso si se puede med
 \multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}SEGUIMIENTO DE AVANCE}                                                                       \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
+1.1 & Avance documento & Semanal & \supname & & Reporte \\ \hline
+1.2 & Reuniones realizadas &  & \supname & &  \\ \hline
+2.1 & Pendiente/Listo &  & \supname & &  \\ \hline
+2.2 & Pendiente/Listo &  & \supname & &  \\ \hline
+3.1 & Pendiente/En progreso/Listo &  & \supname & &  \\ \hline
+3.2 & Migraciones creadas &  & \supname & &  \\ \hline
+3.3 & Seeders creados &  & \supname & &  \\ \hline
+3.4 & Funciones creadas &  & \supname & &  \\ \hline
+3.5 & Funciones creadas &  & \supname & &  \\ \hline
+3.6 & Pendiente/Listo &  & \supname & &  \\ \hline
+4.1 & Pendiente/Listo &  & \supname & &  \\ \hline
+4.2 & Pendiente/Listo &  & \supname & &  \\ \hline
+4.3 & Pendiente/En progreso/Listo &  & \supname & &  \\ \hline
+4.4 & Pendiente/Listo &  & \supname & &  \\ \hline
+5.1 & Pendiente/En progreso/Listo &  & \supname & &  \\ \hline
+6.1 & Vistas definidas &  & \supname & &  \\ \hline
+6.2 & Implementados &  & \supname & &  \\ \hline
+6.3 & Implementados &  & \supname & &  \\ \hline
+6.4 & Pendiente/Listo &  & \supname & &  \\ \hline
+7.1 & Pendiente/Listo &  & \supname & &  \\ \hline
+7.2 & Vistas diseñadas &  & \supname & &  \\ \hline
+7.3 & Implementados &  & \supname & &  \\ \hline
+7.4 & Pendiente/Listo &  & \supname & &  \\ \hline
+8.1 & Pendiente/Listo &  & \supname & &  \\ \hline
+8.2 & Reuniones realizadas &  & \supname & &  \\ \hline
+9.1 & Tests realizados &  & \supname & &  \\ \hline
 \end{tabularx}%
 %}
 \end{table}
 
+
+
 \section{17. Procesos de cierre}    
 \label{sec:cierre}
 
+\begin{comment}
 \begin{consigna}{red}
 Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
 
@@ -971,6 +1208,7 @@ Establecer las pautas de trabajo para realizar una reunión final de evaluación
 \end{itemize}
 
 \end{consigna}
+\end{comment}
 
 
 \end{document}
