@@ -590,6 +590,7 @@ name=tarea_9_1
 \section{10. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
 
+\begin{comment}
 \begin{consigna}{red}
 Si el proyecto es complejo entonces separarlo en partes:
 \begin{itemize}
@@ -600,8 +601,6 @@ Si el proyecto es complejo entonces separarlo en partes:
 IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
 
 \end{consigna}
-
-\begin{comment}
 
 \begin{table}[htpb]
 \centering
@@ -661,6 +660,8 @@ Descripción &
 
 \end{comment}
 
+NO HAY PRESUPUESTO ASIGNADO
+
 \newpage
 \section{11. Matriz de asignación de responsabilidades}
 \label{sec:responsabilidades}
@@ -692,7 +693,7 @@ Importante: es redundante poner ``I/A'' o ``I/C'', porque para aprobarlo o respo
 \begin{table}[htpb]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|c|c|}
+\begin{tabular}{|c|l|c|c|c|c|}
 \hline
 \rowcolor[HTML]{C0C0C0} 
 \cellcolor[HTML]{C0C0C0} &
@@ -721,23 +722,23 @@ Importante: es redundante poner ``I/A'' o ``I/C'', porque para aprobarlo o respo
 3.3 & Crear Seeders para las tablas & P & A &  &  \\ \hline
 3.4 & Crear servicio de acceso a base de datos & P & A &  &  \\ \hline
 3.5 & Crear API de acceso a datos & P & A &  &  \\ \hline
-3.6 & Verificación & S & P & A &  \\ \hline
+3.6 & Verificación & S & P & A & I \\ \hline
 4.1 & Estudiar y agregar plugin de autenticación & P &  &  &  \\ \hline
 4.2 & Estudiar plugin de roles & P & I & I &  \\ \hline
 4.3 & Agregar plugin de roles y definir roles & P & A & I &  \\ \hline
-4.4 & Verificación & S & P & A &  \\ \hline
+4.4 & Verificación & S & P & A & I \\ \hline
 5.1 & Implementar recepción e inserción de registros & P & A & I & \\ \hline
 6.1 & Definir vistas de configuración & P & A &  &  \\ \hline
 6.2 & Implementar componentes Vue & P & A &  &  \\ \hline
 6.3 & Implementar vistas & P & A &  &  \\ \hline
-6.4 & Verificación & S & P &  &  \\ \hline
+6.4 & Verificación & S & P & A & I \\ \hline
 7.1 & Estudiar Google Vue Charts & P &  &  &  \\ \hline
 7.2 & Diseñar vistas para cada tipo de ensayo & P & A &  &  \\ \hline
 7.3 & Implementar componente Vue para cada tipo & P & A &  &  \\ \hline
 7.4 & Verificación & S & P & S &  \\ \hline
 8.1 & Acordar estructuras de datos & P & S & S &  \\ \hline
 8.2 & Reuniones de asistencia e intercambio & P &  &  &  \\ \hline
-9.1 & Realizar los tests de aprobación & S & P & S & A \\ \hline
+9.1 & Realizar los tests de aprobación & S & P & A & A \\ \hline
 \end{tabular}%
 }
 \end{table}
@@ -1100,9 +1101,11 @@ Mostrar al cliente una simulación de ensayo recibido y cómo estos se guardan e
 \section{14. Comunicación del proyecto}
 \label{sec:comunicaciones}
 
+\begin{comment}
 \begin{consigna}{red}
 El plan de comunicación del proyecto es el siguiente:
 \end{consigna}
+\end{comment}
 
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
@@ -1118,8 +1121,8 @@ El plan de comunicación del proyecto es el siguiente:
 \rowcolor[HTML]{C0C0C0} 
 ¿Qué comunicar? & Audiencia & Propósito & Frecuencia & Método de comunicac. & Responsable \\ \hline
 Avances en el diseño & Equipo & Informar & Semanal & Email & \authorname \\ \hline
-Avances en la implementación & Equipo & Informar Revisar & Semanal & Reunión & \authorname \\ \hline
-Imprevistos & Todos & Resolver Acordar & Cuando ocurra & Reunión & \authorname \\ \hline
+Avances en la implementación & Equipo & Informar, revisar & Semanal & Reunión & \authorname \\ \hline
+Imprevistos & Todos & Resolver, acordar & Cuando ocurra & Reunión & \supname \\ \hline
 \end{tabular}%
 }
 \end{table}
@@ -1138,7 +1141,6 @@ b) Redacte el Statement of Work correspondiente.
 
 NO HAY COMPRAS INVOLUCRADAS
 
-\newpage
 \section{16. Seguimiento y control}
 \label{sec:seguimiento}
 
@@ -1153,38 +1155,38 @@ El indicador de avance tiene que ser algo medible, mejor incluso si se puede med
 
 \begin{table}[!htpb]
 \centering
-\begin{tabularx}{\linewidth}{@{}|X|X|X|X|X|X|@{}}
+\begin{tabularx}{\linewidth}{@{}|c|X|X|X|X|X|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}SEGUIMIENTO DE AVANCE}                                                                       \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
-1.1 & Avance documento & Semanal & \supname & & Reporte \\ \hline
-1.2 & Reuniones realizadas &  & \supname & &  \\ \hline
-2.1 & Pendiente/Listo &  & \supname & &  \\ \hline
-2.2 & Pendiente/Listo &  & \supname & &  \\ \hline
-3.1 & Pendiente/En progreso/Listo &  & \supname & &  \\ \hline
-3.2 & Migraciones creadas &  & \supname & &  \\ \hline
-3.3 & Seeders creados &  & \supname & &  \\ \hline
-3.4 & Funciones creadas &  & \supname & &  \\ \hline
-3.5 & Funciones creadas &  & \supname & &  \\ \hline
-3.6 & Pendiente/Listo &  & \supname & &  \\ \hline
-4.1 & Pendiente/Listo &  & \supname & &  \\ \hline
-4.2 & Pendiente/Listo &  & \supname & &  \\ \hline
-4.3 & Pendiente/En progreso/Listo &  & \supname & &  \\ \hline
-4.4 & Pendiente/Listo &  & \supname & &  \\ \hline
-5.1 & Pendiente/En progreso/Listo &  & \supname & &  \\ \hline
-6.1 & Vistas definidas &  & \supname & &  \\ \hline
-6.2 & Implementados &  & \supname & &  \\ \hline
-6.3 & Implementados &  & \supname & &  \\ \hline
-6.4 & Pendiente/Listo &  & \supname & &  \\ \hline
-7.1 & Pendiente/Listo &  & \supname & &  \\ \hline
-7.2 & Vistas diseñadas &  & \supname & &  \\ \hline
-7.3 & Implementados &  & \supname & &  \\ \hline
-7.4 & Pendiente/Listo &  & \supname & &  \\ \hline
-8.1 & Pendiente/Listo &  & \supname & &  \\ \hline
-8.2 & Reuniones realizadas &  & \supname & &  \\ \hline
-9.1 & Tests realizados &  & \supname & &  \\ \hline
+1.1 & Avance documento & Semanal & \supname & \clientename & Planilla de avance \\ \hline
+1.2 & Reuniones realizadas & Semanal & \supname & \clientename & Planilla de avance \\ \hline
+2.1 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+2.2 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+3.1 & Pendiente/En progreso/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+3.2 & Migraciones implementadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+3.3 & Seeders implementados & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+3.4 & Funciones implementadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+3.5 & Funciones implementadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+3.6 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+4.1 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+4.2 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+4.3 & Pendiente/En progreso/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+4.4 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+5.1 & Pendiente/En progreso/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+6.1 & Vistas definidas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+6.2 & Componentes implementados & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+6.3 & Vistas implementadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+6.4 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+7.1 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+7.2 & Vistas diseñadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+7.3 & Componentes implementados & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+7.4 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+8.1 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+8.2 & Reuniones realizadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+9.1 & Tests realizados & Semanal & \supname & \clientename & Reporte  \\ \hline
 \end{tabularx}%
 %}
 \end{table}
@@ -1209,6 +1211,7 @@ Establecer las pautas de trabajo para realizar una reunión final de evaluación
 
 \end{consigna}
 \end{comment}
+
 
 
 \end{document}
