@@ -306,11 +306,14 @@ Cantidad total de horas: (456 hs)
 
 
 
+\begin{landscape}
+
+\begin{figure}[htb]
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
 
-\begin{landscape}
-
+    \centering
+    \resizebox{1.5\textwidth}{!}{%
 \begin{tikzpicture}[
 hito/.style={circle, draw=black, thick, minimum size=2cm},
 tarea/.style={rectangle, draw=black, thick, minimum size=2cm, text width=2em, text centered},
@@ -361,18 +364,20 @@ tarea/.style={rectangle, draw=black, thick, minimum size=2cm, text width=2em, te
 \node[hito]      (fin)	   [right=of tarea_9_1] {Fin};
 
 %Lines
-%\draw[->] (tarea_1_1.east) -- (tarea_1_2.west);
-
+%\draw [->] (inicio) -- (tarea_1_1);
 \end{tikzpicture}
-\end{landscape}
 
+}%
+  \caption{Diagrama Activity On Node}
+  \end{figure}
 
+\newpage
 
+\begin{figure}[htb]
 \section{8. Diagrama de Gantt}
 \label{sec:gantt}
-
-%\begin{landscape}
-\newpage
+    \centering
+    \resizebox{1.5\textwidth}{!}{%
 
 \begin{ganttchart}[
 canvas/.append style={fill=none, draw=black!5, line width=.75pt},
@@ -542,7 +547,11 @@ name=tarea_9_1
 
 \end{ganttchart}
 
-%\end{landscape}
+}%
+  \caption{Diagrama de Gantt}
+  \end{figure}
+
+\end{landscape}
 
 
 \section{9. Matriz de uso de recursos de materiales}
