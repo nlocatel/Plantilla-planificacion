@@ -17,11 +17,11 @@
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Nicolás Locatelli} 
+\autor{Ing. Nicolás Locatelli} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
 \director{Gustavo Ramoscelli}
-\pertenenciaDirector{GICSAFE} 
+\pertenenciaDirector{UNS,CONICET-GICSAFe} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
 \pertenenciaCoDirector{}
@@ -72,6 +72,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 1.1      & Avance sobre puntos 1 a 6 del documento                                                               & 09/07/2020 \\ \hline
 1.2      & Avance sobre puntos 7 a 12 del documento                                                               & 27/07/2020 \\ \hline
 1.3      & Avance sobre puntos 13 a 17 del documento                                                               & 05/08/2020 \\ \hline
+1.4      & Modificaciones por sugerencias del cuerpo Directivo                                                               & 10/08/2020 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -89,7 +90,7 @@ Buenos Aires, \fechaInicioName
 \vspace{2cm}
 
 Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sitio web para la configuración y muestra de resultados de los ensayos a realizar por el sistema probador de relés ferroviarios.
-Tendrá un presupuesto preliminar estimado de 600 hs de trabajo y sin presupuesto asignado, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Tendrá un presupuesto preliminar estimado de 600 hs de trabajo, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -146,8 +147,8 @@ Impulsor      & Mariano Fernandez Soler  & Trenes Argentinos   	& -        	\\ \
 Responsable   & \authorname       & GICSAFE        	& Alumno 	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hline
 Colaborador    & Ariel Lutemberg  & GICSAFE 	& Director Posgrado \\ \hline
-Equipo        & Gustavo Ramoscelli& GICSAFE        	& Docente        	\\ \hline
-Usuario final & \clientename      &\empclientename 	& -       	\\ \hline
+Equipo        & Gustavo Ramoscelli& \pertesupname  	& Docente        	\\ \hline
+Usuario final & Operador del laboratorio de ensayos &\empclientename 	& -       	\\ \hline
 \end{tabularx}
 \end{table}
 
@@ -193,35 +194,41 @@ Para el desarrollo del presente proyecto se supone:
 
 \begin{enumerate}
 
-\item Grupo de requerimientos asociados con Usuarios:
+\item Requerimientos relativos a usuarios:
 	\begin{enumerate}
-	\item Los usuarios del sistema deberán autenticarse para usarlo.
-	\item Las contraseñas de usuario tendrán encriptación AES.
+	\item Se pedirá al usuario autenticarse mediante nombre y password para usar el sistema. El usuario no autenticado será redirigido a una pantalla de login.
 	\item Habrá tres (3) roles de usuarios: Administrador, Configurador y Usuario de solo lectura.
-	\item Pantalla de login de usuario. Un usuario no autenticado será redirigido a esta pantalla.
-	\item Un usuario Administrador súlo podrá administrar usuarios.
-	\item Un usuario Configurador sólo podrá utilizar la funcionalidad relativa a configuración de ensayos. 
-	\item Un usuario de solo lectura sólo podrá utilizar la funcionalidad relativa a la visualización de resultados.
+		\begin{enumerate}
+		\item El usuario de tipo 'Administrador' sólo será autorizado a realizar operaciones relativas a administrar usuarios.
+		\item El usuario de tipo 'Configurador' sólo será autorizado a realizar operaciones relativas a configuración de ensayos.
+		\item El usuario de tipo 'Solo lectura' sólo será autorizado a realizar operaciones relativas a la visualización de resultados.
+		\end{enumerate}
 	\end{enumerate}
 
-\item Grupo de requerimientos asociados con configuración de ensayos:
+\item Requerimientos relativos configuración de ensayos:
 	\begin{enumerate}
-	\item Vista de configuración de ensayo.
-	\item La vista permitirá al usuario seleccionar el relé, indicar el tipo de ensayo y los parámetros del mismo.
-	\item Los datos indicados para el ensayo serán validados.
+	\item Habrá una vista para la configuración de ensayo. La vista permitirá al usuario seleccionar el relé, indicar el tipo de ensayo y los parámetros pertinentes al ensayo.
+	\item Los datos indicados para el ensayo serán validados, con indicación visual y clara para el usuario.
 	\end{enumerate}
 
-\item Grupo de requerimientos asociados con visualización de ensayos:
+\item Requerimientos relativos a visualización de ensayos:
 	\begin{enumerate}
-	\item Vista de listado índice de relés.
-	\item Al seleccionar un relé del listado, se mostrará una pantalla de resultados de ensayos del relé.
-	\item La vista de resultados de ensayos del relé mostrará los resultados de los ensayos en forma numérica y gráfica, buscando una facil interpretación por parte del usuario.
+	\item Habrá una vista del listado índice de relés.
+	\item Al seleccionar un relé del listado, se mostrará una vista de resultados de ensayos del relé seleccionado.
+	\item La vista de resultados de ensayos del relé mostrará los resultados de los ensayos en forma numérica y gráfica, de fácil interpretación por parte del usuario.
 	\end{enumerate}
 
-\item Grupo de requerimientos asociados con la persistencia de datos:
+\item Requerimientos relativos a la comunicación con el hardware:
 	\begin{enumerate}
-	\item Todos los datos serán guardados en la base de datos del servidor provisto por Trenes.
+	\item El sistema deberá ser capaz de comunicarse con potencialmente más de un equipo probador de relés. Inicialmente será un único equipo, pero este número puede ser mayor en el futuro.
 	\end{enumerate}
+
+\item Requerimientos relativos a la persistencia de datos:
+	\begin{enumerate}
+	\item Los datos serán persistidos en un servidor y base de datos provista por el cliente.
+	\item Cualquier registro de la base de datos, tendrá referencia al último usuario que lo modificó, junto con la fecha.
+	\end{enumerate}
+
 	
 \end{enumerate}
 
