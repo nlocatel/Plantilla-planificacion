@@ -7,7 +7,7 @@
 \usepackage{comment}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Software probador de relé ferroviario} 
+\titulo{Interfaz web para proyecto de homologación de relés de señalamiento tipo B1}
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -20,7 +20,7 @@
 \autor{Ing. Nicolás Locatelli} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Gustavo Ramoscelli}
+\director{Ing. Gustavo Ramoscelli}
 \pertenenciaDirector{UNS,CONICET-GICSAFe} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
@@ -72,7 +72,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 1.1      & Avance sobre puntos 1 a 6 del documento                                                               & 09/07/2020 \\ \hline
 1.2      & Avance sobre puntos 7 a 12 del documento                                                               & 27/07/2020 \\ \hline
 1.3      & Avance sobre puntos 13 a 17 del documento                                                               & 05/08/2020 \\ \hline
-1.4      & Modificaciones por sugerencias del cuerpo Directivo                                                               & 10/08/2020 \\ \hline
+1.3.1    & Modificaciones por sugerencias del cuerpo Directivo                                                               & 10/08/2020 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -100,7 +100,7 @@ Se adjunta a esta acta la planificación inicial.
 \begin{table}[ht]
 \centering
 \begin{tabular}{ccc}
-\begin{tabular}[c]{@{}c@{}}Ariel Lutenberg \\ Director posgrado FIUBA\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}\clientename \\ \empclientename \end{tabular} \vspace{2.5cm} \\ 
+\begin{tabular}[c]{@{}c@{}}Ing. Ariel Lutenberg \\ Director posgrado FIUBA\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}\clientename \\ \empclientename \end{tabular} \vspace{2.5cm} \\ 
 \multicolumn{3}{c}{\begin{tabular}[c]{@{}c@{}} \supname \\ Director del Trabajo Final\end{tabular}} \vspace{2.5cm} \\
 \begin{tabular}[c]{@{}c@{}}\jurunoname \\ Jurado del Trabajo Final\end{tabular}     &  & \begin{tabular}[c]{@{}c@{}}\jurdosname\\ Jurado del Trabajo Final\end{tabular}  \vspace{2.5cm}  \\
 \multicolumn{3}{c}{\begin{tabular}[c]{@{}c@{}} \jurtresname\\ Jurado del Trabajo Final\end{tabular}} \vspace{.5cm}                                                                     
@@ -146,8 +146,8 @@ Cliente       & \clientename      &\empclientename	& -      	\\ \hline
 Impulsor      & Mariano Fernandez Soler  & Trenes Argentinos   	& -        	\\ \hline
 Responsable   & \authorname       & GICSAFE        	& Alumno 	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hline
-Colaborador    & Ariel Lutemberg  & GICSAFE 	& Director Posgrado \\ \hline
-Equipo        & Gustavo Ramoscelli& \pertesupname  	& Docente        	\\ \hline
+Colaborador    & Ing. Ariel Lutemberg  & GICSAFE 	& Director Posgrado \\ \hline
+Equipo        & Ing. Gustavo Ramoscelli& \pertesupname  	& Docente        	\\ \hline
 Usuario final & Operador del laboratorio de ensayos &\empclientename 	& -       	\\ \hline
 \end{tabularx}
 \end{table}
@@ -568,37 +568,37 @@ name=tarea_9_1
 \begin{table}[htpb]
 \label{tab:recursos}
 \centering
-\begin{tabular}{|l|l|c|c|c|}
+\begin{tabular}{|l|l|c|c|}
 \hline
-\multicolumn{1}{|c|}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}}} & \multicolumn{1}{c|}{\multirow{2}{*}{Nombre tarea}} & \multicolumn{3}{c|}{Uso de recursos [hs]} \\ \cline{3-5} 
-\multicolumn{1}{|c|}{}                                                                      & \multicolumn{1}{c|}{}                              & Notebook 1 & Notebook 2 & Servidor \\ \hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}}} & \multicolumn{1}{c|}{\multirow{2}{*}{Nombre tarea}} & \multicolumn{2}{c|}{Uso de recursos [hs]} \\ \cline{3-4} 
+                                                                  & \multicolumn{1}{c|}{}                              & Notebook 1 & Servidor \\ \hline
 
-1.1 & Leer documentación del proyecto  & 48 &  &  \\ \hline
-1.2 & Reuniones con el equipo & 16 &  &  \\ \hline
-2.1 & Organizar herramientas de desarrollo & 16 &  & 8 \\ \hline
-2.2 & Generación del entorno y el repositorio & 16 &  & 8 \\ \hline
-3.1 & Definir entidades y sus relaciones & 16 &  &  \\ \hline
-3.2 & Crear las migraciones para generar las tablas & 8 &  &  \\ \hline
-3.3 & Crear Seeders para las tablas & 8 &  &  \\ \hline
-3.4 & Crear servicio de acceso a base de datos & 16 &  &  \\ \hline
-3.5 & Crear API de acceso a datos & 16 &  &  \\ \hline
-3.6 & Verificación & 8 &  &  \\ \hline
-4.1 & Estudiar y agregar plugin de autenticación & 8 &  &  \\ \hline
-4.2 & Estudiar plugin de roles & 16 &  &  \\ \hline
-4.3 & Agregar plugin de roles y definir roles & 16 &  &  \\ \hline
-4.4 & Verificación & 8 &  &  \\ \hline
-5.1 & Implementar recepción e inserción de registros & 24 &  & 24 \\ \hline
-6.1 & Definir vistas de configuración & 16 &  &  \\ \hline
-6.2 & Implementar componentes Vue & 24 &  &  \\ \hline
-6.3 & Implementar vistas & 24 &  &  \\ \hline
-6.4 & Verificación & 8 &  &  \\ \hline
-7.1 & Estudiar Google Vue Charts & 8 &  &  \\ \hline
-7.2 & Diseñar vistas para cada tipo de ensayo & 16 &  &  \\ \hline
-7.3 & Implementar componente Vue para cada tipo & 48 &  &  \\ \hline
-7.4 & Verificación & 8 &  &  \\ \hline
-8.1 & Acordar estructuras de datos & 16 &  &  \\ \hline
-8.2 & Reuniones de asistencia e intercambio & 16 &  &  \\ \hline
-9.1 & Realizar los tests de aprobación & 32 &  & 32 \\ \hline
+1.1 & Leer documentación del proyecto  & 48 &    \\ \hline
+1.2 & Reuniones con el equipo & 16 &    \\ \hline
+2.1 & Organizar herramientas de desarrollo & 16 &  8 \\ \hline
+2.2 & Generación del entorno y el repositorio & 16  & 8 \\ \hline
+3.1 & Definir entidades y sus relaciones & 16  &  \\ \hline
+3.2 & Crear las migraciones para generar las tablas & 8  &  \\ \hline
+3.3 & Crear Seeders para las tablas & 8  &  \\ \hline
+3.4 & Crear servicio de acceso a base de datos & 16  &  \\ \hline
+3.5 & Crear API de acceso a datos & 16  &  \\ \hline
+3.6 & Verificación & 8  &  \\ \hline
+4.1 & Estudiar y agregar plugin de autenticación & 8  &  \\ \hline
+4.2 & Estudiar plugin de roles & 16  &  \\ \hline
+4.3 & Agregar plugin de roles y definir roles & 16  &  \\ \hline
+4.4 & Verificación & 8  &  \\ \hline
+5.1 & Implementar recepción e inserción de registros & 24  & 24 \\ \hline
+6.1 & Definir vistas de configuración & 16  &  \\ \hline
+6.2 & Implementar componentes Vue & 24  &  \\ \hline
+6.3 & Implementar vistas & 24  &  \\ \hline
+6.4 & Verificación & 8  &  \\ \hline
+7.1 & Estudiar Google Vue Charts & 8  &  \\ \hline
+7.2 & Diseñar vistas para cada tipo de ensayo & 16  &  \\ \hline
+7.3 & Implementar componente Vue para cada tipo & 48  &  \\ \hline
+7.4 & Verificación & 8  &  \\ \hline
+8.1 & Acordar estructuras de datos & 16  &  \\ \hline
+8.2 & Reuniones de asistencia e intercambio & 16  &  \\ \hline
+9.1 & Realizar los tests de aprobación & 32  & 32 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -954,85 +954,39 @@ Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos
 \end{consigna}
 \end{comment}
 
+
+
 \begin{itemize}
-\item Req \#1: Los usuarios del sistema deberán autenticarse para usarlo
+\item Req \#1: Se pedirá al usuario autenticarse mediante nombre y password para usar el sistema. El usuario no autenticado será redirigido a una pantalla de login.
 
 Verificación y validación:
 
 \begin{itemize}
 \item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Preguntar si la funcionalidad está implementada. Comprobarlo haciendo una prueba.
+Chequear en el código si la funcionalidad está implementada. Realizar un test.
 \item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Mostrar al usuario el proceso de validación de forma práctica. 
+Mostrar al cliente el proceso de validación de forma práctica. 
 \end{itemize}
 
-\item Req \#2: Las contraseñas de usuario tendrán encriptación AES
+\item Req \#2: Habrá tres (3) roles de usuarios: Administrador, Configurador y Usuario de solo lectura.
+		\begin{enumerate}
+		\item El usuario de tipo 'Administrador' sólo será autorizado a realizar operaciones relativas a administrar usuarios.
+		\item El usuario de tipo 'Configurador' sólo será autorizado a realizar operaciones relativas a configuración de ensayos.
+		\item El usuario de tipo 'Solo lectura' sólo será autorizado a realizar operaciones relativas a la visualización de resultados.
+		\end{enumerate}
 
 Verificación y validación:
 
 \begin{itemize}
 \item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Comprobar el tipo de encriptación en el código. 
+Verificar que el código contempla los tres tipos de usario.
+ 
 \item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Mostrar al cliente el diseño de la base de datos.
+Mostrar al cliente que para tipo de usuario usando el sistema, las funciones disponibles varían y que sólo pueden realizar las acciones permitidas.
 \end{itemize}
 
-\item Req \#3: Habrá tres (3) roles de usuarios: Administrador, Configurador y Usuario de solo lectura
 
-Verificación y validación:
-
-\begin{itemize}
-\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Comprobarlo en la implementación. 
-\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Mostrar al cliente que en función del tipo de usuario, las funciones disponibles varían.
-\end{itemize}
-
-\item Req \#4: Pantalla de login de usuario. Un usuario no autenticado será redirigido a esta pantalla.
-
-Verificación y validación:
-
-\begin{itemize}
-\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Test de verificación.
-\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Mostrarlo al cliente en forma práctica.
-\end{itemize}
-
-\item Req \#5: Un usuario Administrador solo podrá administrar usuarios.
-
-Verificación y validación:
-
-\begin{itemize}
-\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Verificar que la única opción disponible para un usuario administrador sea la de configurar usuarios.
-\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Mostrarlo al cliente en forma práctica.
-\end{itemize}
-
-\item Req \#6: Un usuario Configurador solo podrá utilizar la funcionalidad relativa a configuración de ensayos.
-
-Verificación y validación:
-
-\begin{itemize}
-\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Verificar que la única opción disponible para un usuario configurador sea la de configurar ensayos.
-\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Mostrarlo al cliente en forma práctica.
-\end{itemize}
-
-\item Req \#7: Un usuario de solo lectura sólo podrá utilizar la funcionalidad relativa a la visualización de resultados.
-
-Verificación y validación:
-
-\begin{itemize}
-\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Verificar que la única opción disponible para un usuario de solo lectura sea la de visualizar ensayos.
-\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Mostrarlo al cliente en forma práctica.
-\end{itemize}
-
-\item Req \#8: Vista de configuración de ensayo.
+\item Req \#3: Habrá una vista para la configuración de ensayo. La vista permitirá al usuario seleccionar el relé, indicar el tipo de ensayo y los parámetros pertinentes al ensayo.
 
 Verificación y validación:
 
@@ -1040,43 +994,59 @@ Verificación y validación:
 \item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
 Testear la vista de configuración de ensayo.
 \item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Mostrar al cliente la vista.
+Mostrar al cliente el proceso práctico de configuración de ensayo.
 \end{itemize}
 
-\item Req \#9: La vista permitirá al usuario seleccionar el relé, indicar el tipo de ensayo y los parámetros del mismo.
+
+\item Req \#4: Los datos indicados para el ensayo serán validados, con indicación visual y clara para el usuario.
 
 Verificación y validación:
 
 \begin{itemize}
 \item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Testear la vista de configuración de ensayo.
+Chequear el módulo de validación de datos. Hacer un test.
+\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
+Mostrar al cliente qué ocurre cuando se ingresan datos equivocados.
+\end{itemize}
+
+
+\item Req \#5: Habrá una vista del listado índice de relés. Al seleccionar un relé del listado, se mostrará una vista de resultados de ensayos del relé seleccionado.
+
+Verificación y validación:
+
+\begin{itemize}
+\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
+Chequear visualmente el código fuente. Hacer una test de funcionamiento.
 \item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
 Mostrar al cliente la operación de la vista.
 \end{itemize}
 
-\item Req \#10: Los datos indicados para el ensayo serán validados.
+
+\item Req \#6: La vista de resultados de ensayos del relé mostrará los resultados de los ensayos en forma numérica y gráfica, de fácil interpretación por parte del usuario.
 
 Verificación y validación:
 
 \begin{itemize}
 \item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Chequear las validaciones en el código, así como la operación de la vista, comprobando los mensajes de validación al usuario.
+Chequear el código. Hacer una prueba de visualización e interpretación práctica de la vista.
 \item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Mostrar al cliente en forma práctica, los mensajes de validación.
+Mostrar al cliente la vista, e indagar sobre el entendimiento de la misma.
 \end{itemize}
 
-\item Req \#11: Vista de listado índice de relés.
+
+\item Req \#7: El sistema deberá ser capaz de comunicarse con potencialmente más de un equipo probador de relés. Inicialmente será un único equipo, pero este número puede ser mayor en el futuro.
 
 Verificación y validación:
 
 \begin{itemize}
 \item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Chequear la vista índice de relés.
+Examinar la lógica de comunicación en la implementación y verificar que el ID de hardware participa como discriminador.
 \item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Mostrar al cliente la vista.
+Mostrar al cliente una prueba cambiando el ID del hardware y verificando que se logra la comunicación como si se tratara de otro equipo.
 \end{itemize}
 
-\item Req \#12: Al seleccionar un relé del listado, se mostrará una pantalla de resultados de ensayos del relé.
+
+\item Req \#8: Al seleccionar un relé del listado, se mostrará una pantalla de resultados de ensayos del relé.
 
 Verificación y validación:
 
@@ -1087,32 +1057,33 @@ Chequear el comportamiento esperado.
 Mostrar al cliente el comportamiento.
 \end{itemize}
 
-\item Req \#13: La vista de resultados de ensayos del relé mostrará los resultados de los ensayos en forma numérica y gráfica, buscando una facil interpretación por parte del usuario.
+
+\item Req \#9: Los datos serán persistidos en un servidor y base de datos provista por el cliente.
 
 Verificación y validación:
 
 \begin{itemize}
 \item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Chequear el comportamiento esperado.
+Chequear la base de datos. Realizar ensayos y comprobar que los datos recibidos son guardados correctamente.
 \item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Mostrar al cliente la vista, e indagar sobre el entendimiento de la misma.
+Mostrar al cliente una simulación de ensayo recibido y cómo estos se guardan en la base de datos correcta.
 \end{itemize}
 
-\item Req \#14: Todos los datos serán guardados en la base de datos del servidor provisto por el cliente.
+
+\item Req \#10: Cualquier registro de la base de datos, tendrá referencia al último usuario que lo modificó, junto con la fecha.
 
 Verificación y validación:
 
 \begin{itemize}
 \item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Chequear la base de datos. Realizar ensayos y comprobar que los datos recibidos son guardados de manera completa.
+Chequear la implementación del código.
 \item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Mostrar al cliente una simulación de ensayo recibido y cómo estos se guardan en la base de datos objetivo.
+Mostrar al cliente que se puede ver el usuario y fecha en un registro modificado.
 \end{itemize}
 
-
 \end{itemize}
 
-
+\newpage
 
 \section{14. Comunicación del proyecto}
 \label{sec:comunicaciones}
@@ -1208,6 +1179,7 @@ Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimien
 \end{table}
 
 
+\newpage
 
 \section{17. Procesos de cierre}    
 \label{sec:cierre}
@@ -1228,6 +1200,26 @@ Establecer las pautas de trabajo para realizar una reunión final de evaluación
 \end{consigna}
 \end{comment}
 
+Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
 
+\begin{itemize}
+
+\item Reunión previa con el equipo para organizar el cierre.
+
+\item Evaluar los resultados del proceso. Evaluar el grado de cumplimiento de la planificación inicial.
+\begin{enumerate}
+\item Grado de cumplimiento de los requerimientos.
+\item Grado de cumplimiento del Gantt.
+\item Grado de cumplimiento la gestión de riesgos.
+\item Grado de cumplimiento la calidad alcanzada.
+\item Grado de satisfacción del cliente.
+\end{enumerate}
+
+\item Acto de agradecimiento a todos los interesados y participantes del proyecto.
+
+\end{itemize}
+
+
+Responsable: \authorname
 
 \end{document}
