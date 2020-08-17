@@ -7,7 +7,7 @@
 \usepackage{comment}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Interfaz web para proyecto de homologación de relés de señalamiento tipo B1}
+\titulo{Aplicación web para sistema de homologación de relés de señalamiento ferroviario tipo B1}
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -27,7 +27,7 @@
 \pertenenciaCoDirector{}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Martín Harris}
+\cliente{Ing. Martín Harris}
 \empresaCliente{Trenes Argentinos}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
@@ -73,6 +73,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 1.2      & Avance sobre puntos 7 a 12 del documento                                                               & 27/07/2020 \\ \hline
 1.3      & Avance sobre puntos 13 a 17 del documento                                                               & 05/08/2020 \\ \hline
 1.3.1    & Modificaciones por sugerencias del cuerpo Directivo                                                               & 10/08/2020 \\ \hline
+1.4      & Agrego historias de usuarios y correcciones                                                               & 14/08/2020 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -143,11 +144,11 @@ En la Figura \ref{fig:diagBloques} se presenta el diagrama conceptual del sistem
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
 Cliente       & \clientename      &\empclientename	& -      	\\ \hline
-Impulsor      & Mariano Fernandez Soler  & Trenes Argentinos   	& -        	\\ \hline
-Responsable   & \authorname       & GICSAFE        	& Alumno 	\\ \hline
+Impulsor      & Ing. Mariano Fernandez Soler  & Trenes Argentinos   	& -        	\\ \hline
+Responsable   & \authorname       & CONICET-GICSAFe        	& Alumno 	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hline
-Colaborador    & Ing. Ariel Lutemberg  & GICSAFE 	& Director Posgrado \\ \hline
-Equipo        & Ing. Gustavo Ramoscelli& \pertesupname  	& Docente        	\\ \hline
+Colaborador    & Ing. Ariel Lutenberg & CONICET-GICSAFe 	& Director Posgrado \\ \hline
+Equipo        & Ing. Gustavo Ramoscelli & \pertesupname  	& Docente        	\\ \hline
 Usuario final & Operador del laboratorio de ensayos &\empclientename 	& -       	\\ \hline
 \end{tabularx}
 \end{table}
@@ -240,6 +241,46 @@ Para el desarrollo del presente proyecto se supone:
 \item Código fuente
 \item Informe final
 \end{itemize}
+
+
+\section{Historias de usuarios (product Backlog)}
+
+Se toma como criterio de prioridad un número entero entre 1 y 10 que representa la necesidad de la característica. Se toma como criterio de ponderación un número entero entre 1 y 10 que representa el tiempo de trabajo para implementar la característica.
+
+\begin{itemize}
+
+\item Como usuario, quiero que las pantallas sean sencillas, sin detalles innecesarios, para interpretar fácilmente la información.
+	\begin{itemize}
+	\item Prioridad: 9
+	\item Ponderación: 6
+	\end{itemize}
+
+\item Como operador, quiero que los datos que ingreso no se pierdan si por error salgo de una pantalla, para no tener que volver a ingresarlos.
+	\begin{itemize}
+	\item Prioridad: 7
+	\item Ponderación: 8
+	\end{itemize}
+
+\item Como cliente, quiero poder ver los resultados de los ensayos desde mi celular, para poder verlos desde cualquier lugar.
+	\begin{itemize}
+	\item Prioridad: 10
+	\item Ponderación: 6
+	\end{itemize}
+
+\item Como cliente, quiero que me llegue un mail cuando un ensayo se completa, con un resumen del resultado.
+	\begin{itemize}
+	\item Prioridad: 8
+	\item Ponderación: 6
+	\end{itemize}
+
+\item Como cliente, quiero un panel donde pueda ver una estadística general de los ensayos, con varios criterios de selección.
+	\begin{itemize}
+	\item Prioridad: 8
+	\item Ponderación: 10
+	\end{itemize}
+
+\end{itemize}
+
 
 \section{6. Desglose del trabajo en tareas}
 \label{sec:wbs}
@@ -416,112 +457,114 @@ group progress label font=\bfseries\small,
 link/.style={-latex, line width=1pt, red},
 link label font=\scriptsize\bfseries,
 link label node/.append style={below left=-2pt and 0pt},
-]{1}{120}
+]{1}{132}
 
-\gantttitle{Software probador de relés de tipo ferroviario}{120} \\[grid]
+\gantttitle{\ttitle}{132} \\[grid]
 \gantttitle{Agosto}{30}
 \gantttitle{Septiembre}{30}
 \gantttitle{Octubre}{30}
 \gantttitle{Noviembre}{30}\\
+\gantttitle{Diciembre}{12}\\
 \gantttitle[
 title label node/.append style={below left=7pt and -3pt}
 ]{Día:\quad1}{1}
-\gantttitlelist{2,...,120}{1} \\
-\ganttgroup[progress=0]{Planificación}{1}{8} \\
+\gantttitlelist{2,...,132}{1} \\
+
+\ganttgroup[progress=0]{Planificación}{1}{32} \\
 \ganttbar[
 name=tarea_1_1
-]{\textbf{Tarea 1.1}}{1}{6} \\
+]{\textbf{Tarea 1.1}}{1}{24} \\
 \ganttbar[
 name=tarea_1_2
-]{\textbf{Tarea 1.2}}{7}{8} \\
+]{\textbf{Tarea 1.2}}{25}{32} \\
 
-\ganttgroup[progress=0]{Preparación}{9}{12} \\
+\ganttgroup[progress=0]{Preparación}{33}{48} \\
 \ganttbar[
 name=tarea_2_1
-]{\textbf{Tarea 2.1}}{9}{10} \\
+]{\textbf{Tarea 2.1}}{33}{40} \\
 \ganttbar[
 name=tarea_2_2
-]{\textbf{Tarea 2.2}}{11}{12} \\
+]{\textbf{Tarea 2.2}}{41}{48} \\
 
-\ganttgroup[progress=0]{Modelo}{13}{18} \\
+\ganttgroup[progress=0]{Modelo}{49}{72} \\
 \ganttbar[
 name=tarea_3_1
-]{\textbf{Tarea 3.1}}{13}{14} \\
+]{\textbf{Tarea 3.1}}{49}{56} \\
 \ganttbar[
 name=tarea_3_2
-]{\textbf{Tarea 3.2}}{15}{15} \\
+]{\textbf{Tarea 3.2}}{57}{60} \\
 \ganttbar[
 name=tarea_3_3
-]{\textbf{Tarea 3.3}}{16}{16} \\
+]{\textbf{Tarea 3.3}}{61}{64} \\
 \ganttbar[
 name=tarea_3_4
-]{\textbf{Tarea 3.4}}{16}{17} \\
+]{\textbf{Tarea 3.4}}{65}{68} \\
 \ganttbar[
 name=tarea_3_5
-]{\textbf{Tarea 3.5}}{16}{17} \\
+]{\textbf{Tarea 3.5}}{65}{68} \\
 \ganttbar[
 name=tarea_3_6
-]{\textbf{Tarea 3.6}}{18}{18} \\
+]{\textbf{Tarea 3.6}}{69}{72} \\
 
-\ganttgroup[progress=0]{Usuarios}{19}{24} \\
+\ganttgroup[progress=0]{Usuarios}{73}{96} \\
 \ganttbar[
 name=tarea_4_1
-]{\textbf{Tarea 4.1}}{19}{19} \\
+]{\textbf{Tarea 4.1}}{73}{76} \\
 \ganttbar[
 name=tarea_4_2
-]{\textbf{Tarea 4.2}}{20}{21} \\
+]{\textbf{Tarea 4.2}}{77}{84} \\
 \ganttbar[
 name=tarea_4_3
-]{\textbf{Tarea 4.3}}{22}{23} \\
+]{\textbf{Tarea 4.3}}{85}{92} \\
 \ganttbar[
 name=tarea_4_4
-]{\textbf{Tarea 4.4}}{24}{24} \\
+]{\textbf{Tarea 4.4}}{93}{96} \\
 
-\ganttgroup[progress=0]{Nodered}{19}{21} \\
+\ganttgroup[progress=0]{Nodered}{73}{84} \\
 \ganttbar[
 name=tarea_5_1
-]{\textbf{Tarea 5.1}}{19}{21} \\
+]{\textbf{Tarea 5.1}}{73}{84} \\
 
-\ganttgroup[progress=0]{Config ensayos}{19}{27} \\
+\ganttgroup[progress=0]{Config ensayos}{73}{108} \\
 \ganttbar[
 name=tarea_6_1
-]{\textbf{Tarea 6.1}}{19}{20} \\
+]{\textbf{Tarea 6.1}}{73}{80} \\
 \ganttbar[
 name=tarea_6_2
-]{\textbf{Tarea 6.2}}{21}{23} \\
+]{\textbf{Tarea 6.2}}{81}{92} \\
 \ganttbar[
 name=tarea_6_3
-]{\textbf{Tarea 6.3}}{24}{26} \\
+]{\textbf{Tarea 6.3}}{93}{104} \\
 \ganttbar[
 name=tarea_6_4
-]{\textbf{Tarea 6.4}}{27}{27} \\
+]{\textbf{Tarea 6.4}}{105}{108} \\
 
-\ganttgroup[progress=0]{Visualización ensayos}{19}{28} \\
+\ganttgroup[progress=0]{Visualización ensayos}{73}{112} \\
 \ganttbar[
 name=tarea_7_1
-]{\textbf{Tarea 7.1}}{19}{19} \\
+]{\textbf{Tarea 7.1}}{73}{76} \\
 \ganttbar[
 name=tarea_7_2
-]{\textbf{Tarea 7.2}}{20}{21} \\
+]{\textbf{Tarea 7.2}}{77}{84} \\
 \ganttbar[
 name=tarea_7_3
-]{\textbf{Tarea 7.3}}{22}{27} \\
+]{\textbf{Tarea 7.3}}{85}{108} \\
 \ganttbar[
 name=tarea_7_4
-]{\textbf{Tarea 7.4}}{28}{28} \\
+]{\textbf{Tarea 7.4}}{109}{112} \\
 
-\ganttgroup[progress=0]{Relación con hardware}{19}{23} \\
+\ganttgroup[progress=0]{Relación con hardware}{73}{92} \\
 \ganttbar[
 name=tarea_8_1
-]{\textbf{Tarea 8.1}}{19}{20} \\
+]{\textbf{Tarea 8.1}}{73}{80} \\
 \ganttbar[
 name=tarea_8_2
-]{\textbf{Tarea 8.2}}{21}{22} \\
+]{\textbf{Tarea 8.2}}{81}{92} \\
 
-\ganttgroup[progress=0]{Tests de aprobación}{29}{33} \\
+\ganttgroup[progress=0]{Tests de aprobación}{113}{132} \\
 \ganttbar[
 name=tarea_9_1
-]{\textbf{Tarea 9.1}}{29}{33} \\
+]{\textbf{Tarea 9.1}}{113}{132} \\
 
 %Links
 \ganttlink{tarea_1_1}{tarea_1_2}
@@ -617,6 +660,7 @@ Si el proyecto es complejo entonces separarlo en partes:
 IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
 
 \end{consigna}
+\end{comment}
 
 \begin{table}[htpb]
 \centering
@@ -629,21 +673,9 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
+\multicolumn{1}{|l|}{Desarrollo integral de la aplicación} & 600 horas
+   & \$ 1.000
+   & \$ 600.000
    \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
   \multicolumn{1}{c|}{} \\ \hline
@@ -654,29 +686,17 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
+\multicolumn{1}{|l|}{10\% del costo directo por imponderables} & ---
+   & ---
+   & \$ 60.000
    \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
   \multicolumn{1}{c|}{} \\ \hline
 \rowcolor[HTML]{C0C0C0}
-\multicolumn{3}{|c|}{TOTAL} &
+\multicolumn{3}{|c|}{TOTAL} & \$ 660.000
    \\ \hline
 \end{tabularx}%
 \end{table}
-
-\end{comment}
-
-NO HAY PRESUPUESTO ASIGNADO
 
 \newpage
 \section{11. Matriz de asignación de responsabilidades}
@@ -828,47 +848,36 @@ Riesgo 3: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de
 \end{comment}
 
 
-R1: El sistema queda fuera de servicio.
+R1: Ausencia por enfermedad o fuerza mayor, de alguno de los responsables del proyecto.
 \begin{itemize}
-\item Severidad (S): 10, porque el sistema debería estar siempre disponible.
-\item Ocurrencia (O): 4, es poco probable dado el uso de servidores de reconocido prestigio.
+\item Severidad (S): 10, porque puede derivar en no terminar a tiempo el proyecto.
+\item Ocurrencia (O): 5, puede ocurrir pero comunmente son pocos días.
 \end{itemize}
 
-R2: El sitio web está lento.
+R2: Falta de tiempo en ocasiones aisladas.
 \begin{itemize}
-\item Severidad (S): 6, sería incómodo, pero no imposible, el uso.
-\item Ocurrencia (O): 4, estimamos que la lentitud ocurre con poca frecuencia.
+\item Severidad (S): 8, idem anterior.
+\item Ocurrencia (O): 6, porque cada uno tiene sus propias actividades regulares.
 \end{itemize}
 
-R3: Falla en la validación de datos ingresados (bug).
+R3: Pérdida del código fuente.
 \begin{itemize}
-\item Severidad (S): 10, habría datos incorrectos en la base de datos. 
-\item Ocurrencia (O): 5, un error inadvertido de programación.
+\item Severidad (S): 10, significa tener que rehacer el trabajo perdido. 
+\item Ocurrencia (O): 5, la falla puede ocurrir en las computadoras personales.
 \end{itemize}
 
-R4: Error en la carga de datos
+R4: Cambios en los requerimientos durante el desarrollo.
 \begin{itemize}
-\item Severidad (S): 8, es grave pero se puede rastrear.
-\item Ocurrencia (O): 4, error de tipeo que puede ocurrir.
+\item Severidad (S): 8, puede significar una extensión de la duración del proyecto.
+\item Ocurrencia (O): 5, en proyectos largos es más probable que se propongan modificaciones.
 \end{itemize}
 
-R5: Las pantallas no son suficientemente claras para el usuario.
+R5: Falta de coordinación con el equipo de Hardware.
 \begin{itemize}
-\item Severidad (S): 6, no es un problema crítico.
-\item Ocurrencia (O): 3, son pantallas sencillas.
+\item Severidad (S): 7, es un trabajo hecho en interdependencia.
+\item Ocurrencia (O): 2, hay tiempo suficiente para coordinar acciones.
 \end{itemize}
 
-R6: Alguna cuenta de usuario es hackeada.
-\begin{itemize}
-\item Severidad (S): 10, es una violación de seguridad.
-\item Ocurrencia (O): 4, el servidor es privado, y son pocos usuarios.
-\end{itemize}
-
-R7: La conexión con la base de datos se pierde, y los resultados que llegan no pueden guardarse.
-\begin{itemize}
-\item Severidad (S): 8, se puede repetir el ensayo.
-\item Ocurrencia (O): 4, los servicios son bastantes estables
-\end{itemize}
 
 \begin{table}[htpb]
 \centering
@@ -876,13 +885,11 @@ R7: La conexión con la base de datos se pierde, y los resultados que llegan no 
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-R1 & 10 & 4 & 40 & 10 & 2 & 20    \\ \hline
-R2 & 6 & 4 & 24 & 6 & 1 & 6   \\ \hline
-R3 & 10 & 5 & 50 & 10 & 1 & 10   \\ \hline
-R4 & 8 & 4 & 32 & 8 & 1 & 8   \\ \hline
-R5 & 6 & 3 & 18 &  &  &    \\ \hline
-R6 & 10 & 4 & 40 & 10 & 2 & 20   \\ \hline
-R7 & 8 & 4 & 32 & 8 & 1 & 8    \\ \hline
+R1 & 10 & 5 & 50 & 8 & 2 & 16    \\ \hline
+R2 & 8 & 6 & 48 & 6 & 4 & 24   \\ \hline
+R3 & 10 & 5 & 50 & 5 & 1 & 5   \\ \hline
+R4 & 8 & 5 & 40 & 8 & 2 & 16   \\ \hline
+R5 & 7 & 2 & 14 &  &  &    \\ \hline
 \end{tabularx}%
 \end{table}
 
@@ -893,41 +900,30 @@ Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplic
 
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
 
-R1: No se escatimará en la calidad y recursos del servidor.
+R1: Designaremos alguna persona sustituta que pueda ocupar esas horas.
 \begin{itemize}
-\item Severidad (S): 10, porque el sistema debería estar siempre disponible.
-\item Ocurrencia (O): 2, un mejor servidor reduce las chances de quedar fuera de servicio.
+\item Severidad (S): 8, no es facil encontrar profesionales disponibles.
+\item Ocurrencia (O): 2, en caso de urgencia, mi director de proyecto puede sustituirme unos días y recuperar el tiempo perdido.
 \end{itemize}
 
-R2: El servidor tendrá recursos para atender más peticiones de las esperadas.
+R2: Recuperar tiempo los fines de semana.
 \begin{itemize}
-\item Severidad (S): 6, sería incómodo, pero no imposible, el uso.
-\item Ocurrencia (O): 1, se reduce la probabilidad de saturación del servidor.
+\item Severidad (S): 6, podría tener otros compromisos aislados.
+\item Ocurrencia (O): 4, en general puedo dedicar más tiempo los fines de semana.
 \end{itemize}
 
-R3: Se reforzará la verificación y los tests.
+R3: Basamos la documentación en el uso de repositorios en la nube.
 \begin{itemize}
-\item Severidad (S): 10, habría datos incorrectos en la base de datos. 
-\item Ocurrencia (O): 1, se reduce los riesgos de dejar un error inadvertido.
+\item Severidad (S): 5, si se pierde en forma local, contamos con el repositorio. 
+\item Ocurrencia (O): 1, los repositorios en la nube son muy confiables.
 \end{itemize}
 
-R4: Se contemplarán todos los casos de ingreso.
+R4: Se conversarán bien los requerimientos para minimizar este tipo de intervenciones.
 \begin{itemize}
-\item Severidad (S): 8, es grave pero se puede rastrear.
-\item Ocurrencia (O): 1, la validación reforzada casi anula el riesgo.
+\item Severidad (S): 8, sigue significando una extensión de la duración del proyecto.
+\item Ocurrencia (O): 2, puede quedar algún detalle olvidado.
 \end{itemize}
 
-R6: Política de fortaleza y caducidad de password, así como acceso por IP.
-\begin{itemize}
-\item Severidad (S): 10, es una violación de seguridad.
-\item Ocurrencia (O): 2, ya queda bastante cubierta la posibilidad de accesos no autorizados.
-\end{itemize}
-
-R7: Se puede usar redundancia de base de datos, con esquema de replicación.
-\begin{itemize}
-\item Severidad (S): 8, se puede repetir el ensayo.
-\item Ocurrencia (O): 1, la replicación aumenta la disponibilidad e integridad del recurso.
-\end{itemize}
 
 
 \section{13. Gestión de la calidad}
@@ -1083,7 +1079,6 @@ Mostrar al cliente que se puede ver el usuario y fecha en un registro modificado
 
 \end{itemize}
 
-\newpage
 
 \section{14. Comunicación del proyecto}
 \label{sec:comunicaciones}
@@ -1126,7 +1121,9 @@ b) Redacte el Statement of Work correspondiente.
 \end{consigna}
 \end{comment}
 
-NO HAY COMPRAS INVOLUCRADAS
+No hay compras involucradas
+
+\newpage
 
 \section{16. Seguimiento y control}
 \label{sec:seguimiento}
@@ -1150,34 +1147,44 @@ El indicador de avance tiene que ser algo medible, mejor incluso si se puede med
 Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
 1.1 & Avance documento & Semanal & \supname & \clientename & Planilla de avance \\ \hline
 1.2 & Reuniones realizadas & Semanal & \supname & \clientename & Planilla de avance \\ \hline
-2.1 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-2.2 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-3.1 & Pendiente/En progreso/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+2.1 & Pendiente / Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+2.2 & Pendiente / Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+3.1 & Pendiente / En progreso / Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
 3.2 & Migraciones implementadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
 3.3 & Seeders implementados & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
 3.4 & Funciones implementadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
 3.5 & Funciones implementadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-3.6 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-4.1 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-4.2 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-4.3 & Pendiente/En progreso/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-4.4 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-5.1 & Pendiente/En progreso/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+3.6 & Pendiente / Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+4.1 & Pendiente / Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+4.2 & Pendiente / Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+4.3 & Pendiente / En progreso / Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+4.4 & Pendiente / Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+5.1 & Pendiente / En progreso / Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
 6.1 & Vistas definidas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
 6.2 & Componentes implementados & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-6.3 & Vistas implementadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-6.4 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-7.1 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-7.2 & Vistas diseñadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-7.3 & Componentes implementados & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-7.4 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-8.1 & Pendiente/Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-8.2 & Reuniones realizadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
-9.1 & Tests realizados & Semanal & \supname & \clientename & Reporte  \\ \hline
 \end{tabularx}%
 %}
 \end{table}
 
+\begin{table}[!htpb]
+\centering
+\begin{tabularx}{\linewidth}{@{}|c|X|X|X|X|X|@{}}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}SEGUIMIENTO DE AVANCE}                                                                       \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
+6.3 & Vistas implementadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+6.4 & Pendiente / Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+7.1 & Pendiente / Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+7.2 & Vistas diseñadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+7.3 & Componentes implementados & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+7.4 & Pendiente / Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+8.1 & Pendiente / Listo & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+8.2 & Reuniones realizadas & Semanal & \supname & \clientename & Planilla de avance  \\ \hline
+9.1 & Tests realizados & Semanal & \supname & \clientename & Reporte  \\ \hline
+\end{tabularx}%
+\end{table}
 
 \newpage
 
